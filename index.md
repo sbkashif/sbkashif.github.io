@@ -13,3 +13,5 @@ layout: home
 Hello! I am Salman. I am a PhD candidate at [Clemson ChBE](https://www.clemson.edu/cecas/departments/chbe/). I work in the field of computational molecular science with [Prof. Sapna Sarupria](http://molecularsimulations.sites.clemson.edu/). 
 
 ---
+# Recent blog posts
+
