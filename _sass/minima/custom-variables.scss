@@ -1,1 +1,16 @@
 // Placeholder to allow overriding predefined variables smoothly.
+.site-header {
+ background-color: #522d80;
+}.site-title, .page-link {
+ color: white !important;
+}
+
+img[src$="#profile"]{
+  border: 1px solid #ddd;
+  display: block;
+  margin: 0 auto;
+  border-radius: 50%;
+  max-width: 30%;
+  PADDING:4px;
+}
+

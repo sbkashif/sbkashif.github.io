@@ -4,15 +4,7 @@ title: About
 permalink: /about/
 ---
 
-This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](https://jekyllrb.com/)
-
-You can find the source code for Minima at GitHub:
-[jekyll][jekyll-organization] /
-[minima](https://github.com/jekyll/minima)
-
-You can find the source code for Jekyll at GitHub:
-[jekyll][jekyll-organization] /
-[jekyll](https://github.com/jekyll/jekyll)
+I have a chemical engineering background with primary interest in modelling and simulation. For my PhD dissertaion, the system of study is desalination membranes. I use molecular simulations to understand the fouling as well as salt reaction mechanisms in polyamide membranes. I am also working on developing an open-source Python package for generating the starting structures of amorphous polymers for molcular simulations.
 
 
-[jekyll-organization]: https://github.com/jekyll
+
