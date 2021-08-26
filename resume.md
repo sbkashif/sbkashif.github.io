@@ -6,31 +6,27 @@ permalink: /resume/
 
 
 
-Johnny Coder
+Salman Bin Kashif
 ============
-
-----
-
->  In this style, the resume starts with a blockquote, where
->  you can briefly list your specialties, or include a salient
->  quote. Ending a line with a backslash forces a line break.
-
-----
 
 Education
 ---------
 
-2010-2014 (expected)
-:   **PhD, Computer Science**; Awesome University (MyTown)
+2017-2022 (expected)
+:   **Ph.D., Chemical Engineering**; Clemson University, Clemson, SC, USA 
 
-    *Thesis title: Deep Learning Approaches to the Self-Awesomeness
-     Estimation Problem*
+    *Thesis title:* Understanding fouling and salt rejection mechanism in polyamide membranes using molecular simulation
 
-2007-2010
-:   **BSc, Computer Science and Electrical Engineering**; University of
-    HomeTown (HomeTown)
+2015-2017
+:   **M.Sc., Chemical Engineering**; Universiti Teknologi PETRONAS, Perak, Malaysia
 
-    *Minor: Awesomeology*
+    *Thesis title:* CFD simulation N2/H2 flow profile in a monolihtic channel encountered by obstruction assembly
+
+2010-2014
+:   **B.Tech., Chemical Engineering**; Aligarh Muslim University, Aligarh, UP, India
+
+    *Final year project:* Determination of terminal settling velocity of an object using Image Processing Tool of MATLAB
+
 
 Experience
 ----------
