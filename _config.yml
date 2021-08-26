@@ -3,7 +3,7 @@ author:
   name: Salman Bin Kashif
   email: sbinkas@clemson.edu
 description: > # this means to ignore newlines until "show_excerpts:"
-    This is Salman's personal webpage. Here he gives details about his work and posts blogs occasioanlly.
+    This is Salman's personal webpage. The page features the details of his work, and the blogs he posts occasionally. 
 
 show_excerpts: false # set to true to show excerpts on the homepage
 
