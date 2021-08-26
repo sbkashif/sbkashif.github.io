@@ -10,6 +10,6 @@ layout: home
 
 ![profile](/assets/profile.jpg#profile)
 
-Hello I am Salman. I am a PhD candiate at [Clemson ChBE](https://www.clemson.edu/cecas/departments/chbe/). I work in the field of computational molecular science with [Prof. Sapna Sarupria](http://molecularsimulations.sites.clemson.edu/). 
+Hello! I am Salman. I am a PhD candiate at [Clemson ChBE](https://www.clemson.edu/cecas/departments/chbe/). I work in the field of computational molecular science with [Prof. Sapna Sarupria](http://molecularsimulations.sites.clemson.edu/). 
 
 ---
