@@ -6,16 +6,13 @@ permalink: /resume/
 
 
 
-Salman Bin Kashif
-============
-
 Education
 ---------
 
 2017-2022 (expected)
 :   **Ph.D., Chemical Engineering**; Clemson University, Clemson, SC, USA 
 
-    *Thesis title:* Understanding fouling and salt rejection mechanism in polyamide membranes using molecular simulation
+    *Dissertation title:* Understanding fouling and salt rejection mechanism in polyamide membranes using molecular simulation
 
 2015-2017
 :   **M.Sc., Chemical Engineering**; Universiti Teknologi PETRONAS, Perak, Malaysia
@@ -31,7 +28,7 @@ Education
 Experience
 ----------
 
-**Your Most Recent Work Experience:**
+**Graduate Research Assistant**
 
 Short text containing the type of work done, results obtained,
 lessons learned and other remarks. Can also include lists and

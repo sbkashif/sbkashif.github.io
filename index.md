@@ -8,7 +8,7 @@
 layout: home
 ---
 
-![profile](/assets/profile.jpg#profile)
+![profile](/assets/profile.png#profile)
 
 ## Hello! I am Salman. I am a PhD candidate at [Clemson ChBE](https://www.clemson.edu/cecas/departments/chbe/). I work in the field of computational molecular science with [Prof. Sapna Sarupria](http://molecularsimulations.sites.clemson.edu/). I study water filtration membranes using molecular simulations combined with advanced sampling techniques. 
 ---
