@@ -15,11 +15,11 @@ layout: home
 
 # Research
 
-## Organic fouling on polyamide membranes using molecular dynamics simulations
+### Organic fouling on polyamide membranes using molecular dynamics simulations
 
 Details to be populated soon...
 
-## Development of an in-silico polymerization software for amorphous polymers
+### Development of an in-silico polymerization software for amorphous polymers
 
 Details to be populated soon
 
