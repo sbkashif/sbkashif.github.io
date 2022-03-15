@@ -21,7 +21,7 @@ Details to be populated soon...
 
 ### Development of an in-silico polymerization software for amorphous polymers
 
-Details to be populated soon
+Details to be populated soon ...
 
 
 
