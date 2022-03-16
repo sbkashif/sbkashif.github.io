@@ -3,7 +3,6 @@ layout: page
 title: About
 permalink: /about/
 ---
-
 As a work profile, I am greatly fascinated with the potential of computer simulations in solving the engineering problems. In particular, with the extent of control in setting up the systems for evalutaing the role of various parameters.
 
 My experience with the simulations has mostly been with performing molecular dynamics simulations using the open source software. I have some experience with developing the open source software packages as well. I aspire to work at the intersection of molecular modeling, machine learning and software development in the future, focusing on challenging polymer science and/or biophysics problems.   
