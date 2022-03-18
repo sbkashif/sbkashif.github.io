@@ -6,7 +6,7 @@ permalink: /about/
 
 
 
-My background is in chemical engineering, with a strong inclination towards computer simulations. The simulations provide an amazing level of control in studying the role of different parameters in a system  – independently, combined, and everything in between.
+My background is in chemical engineering, with a strong inclination towards computer simulations. The particular thing that fascinates me about computer simulations is the extent of control in studying the role of different parameters in a system  – independently, combined, and everything in between.
 
 My ideal work profile would be at the intersection of molecular simulations, machine learning, and software development, focusing on challenging polymer science and/or biophysics problems.
 
