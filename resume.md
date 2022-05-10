@@ -28,14 +28,14 @@ Education
 Experience
 ----------
 2017-Present
-:**Graduate Research Assistant, Clemson University, Clemson, SC**
+:   **Graduate Research Assistant, Clemson University, Clemson, SC**
 
 * Performed research work on studying polyamide membranes using molecular simulations
 
 * Developed a Python-based software for generating the atomic structure of amorphous polymers
 
 2015-17
-:**Graduate Teaching Assistant, Universiti Teknologi PETRONAS, Malaysia**
+:   **Graduate Teaching Assistant, Universiti Teknologi PETRONAS, Malaysia**
 
 * Conducted experiment demonstrations and graded the lab reports.
 - Fluid Mechanics and Heat Transfer Laboratory: Heat Exchanger Experiment(s)
@@ -43,7 +43,7 @@ Experience
 - Principles of Chemical Engineering: ASPEN Plus based simulations 
 
 2014
-:**Engineer Trainee, Alchem International Limited, Fardidabad, Haryana, India**
+:   **Engineer Trainee, Alchem International Limited, Fardidabad, Haryana, India**
 
 * Monitoring the Production operations
 * Preparation of PFD, Valve Diary and Costing Sheet
