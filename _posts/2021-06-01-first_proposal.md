@@ -1,12 +1,12 @@
 ---
 layout: post
 title: My first (formal) research proposal writing experience
-permalink: _psots/:year/:month/:day/:title/
+permalink: _posts/:year/:month/:day/:title/
 ---
 
 I aspire to work in an R&D setting. In the roles relating to the R&D, a major chunk of time goes in writing (funded) research proposals. My very first proposal submission is, therefore, special for me and I would definitely look back at this experience with a smile. 
 
-If the cue I provided in the last sentence wasn't enough, let me state that my first proposal was not recommended for funding. The reviews that I got weren't very encouraging either. However, as with almost every other experience, there was a lot of learning. I applied for the software fellowship offered by The Molecular Sciences Software Institute.
+If the cue I provided in the last sentence wasn't enough, let me state that my first proposal was not recommended for funding. The reviews that I got weren't very encouraging either. However, as with almost every other experience, there was a lot of learning. I applied for the software fellowship offered by [The Molecular Sciences Software Institute](https://molssi.org/fellowship/).
 
 My very first learning had less to do with the content of the proposal, but rather with the importance of proper planning. I did not start writing it well ahead of time and, hence, missed out on getting a comprehensive feedback. A proposal is hardly polished with only a few iterations of reviews and corrections. One should have their first draft ready a couple of months in advance to get feedback from people with different level of exposure with the given topic, with your research advisor being one of them.
 
