@@ -6,12 +6,12 @@ permalink: /about/
 
 
 
-My background is in chemical engineering, with a strong inclination towards computer simulations. The particular thing that fascinates me about computer simulations is the extent of control in studying the role of different parameters in a system  – independently, combined, and everything in between.
+My educational background is in chemical engineering, with specialized expertise at the intersection of molecular simulations, software development and machine learning.
 
-My ideal work profile would be at the intersection of molecular simulations, machine learning, and software development, focusing on challenging polymer science and/or biophysics problems.
+For my Ph.D. dissertation, I studied fouling mechanism and selectivity of polyamide membranes using molecular simulations coupled with advanced sampling. Prior to molecular simulation studies, I developed a generalized python tool to generate initial configurations for molecular simulations of polymer systems. Later, I utilized machine learning models for rapid exploration of design spacce in developing fouling-resistant membranes.
 
-For my Ph.D. dissertation, I am studying the solute rejection mechanism in polyamide membranes using molecular simulations coupled with advanced sampling. My work will eventually help in designing membranes with better water-ion selectivity. I am also planning to expand on studying ion-ion selectivity in the future. In another project, I am developing an open-source Python package for generating the starting structure of amorphous polymers to do molecular simulations.
+I am currently looking for opportunities requiring expertise in studying polymeric and biomolecular systems using computational tools. I am also interested in developing software tools for scientific research.
 
-I like listening to music, reading, and taking long walks in the neighborhood.
+Outside work, I like listening to music, watching soccer and cricket, reading, and taking long walks in the neighborhood.
 
 
