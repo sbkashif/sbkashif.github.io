@@ -10,7 +10,7 @@ layout: home
 
 ![profile](/assets/profile.png#profile)
 
-## Hello! I am Salman, a recent PhD graduate from [Prof. Sapna Sarupria's](https://sarupriagroup.github.io) at [Clemson ChBE](https://www.clemson.edu/cecas/departments/chbe/). I study water filtration membranes using computational tools.
+## Hello! I am Salman, a recent PhD graduate from [Prof. Sapna Sarupria's](https://sarupriagroup.github.io) group at [Clemson ChBE](https://www.clemson.edu/cecas/departments/chbe/). I study water filtration membranes using computational tools.
 ---
 
 # Research
