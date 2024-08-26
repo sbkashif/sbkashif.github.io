@@ -10,21 +10,30 @@ layout: home
 
 ![profile](/assets/profile.png#profile)
 
-## Hello! I am Salman. I am a PhD candidate at [Clemson ChBE](https://www.clemson.edu/cecas/departments/chbe/). I work in the field of computational molecular science with [Prof. Sapna Sarupria](https://sarupriagroup.github.io). I study water filtration membranes using molecular simulations combined with advanced sampling techniques. 
+## Hello! I am Salman, a recent PhD graduate from [Prof. Sapna Sarupria's](https://sarupriagroup.github.io) at [Clemson ChBE](https://www.clemson.edu/cecas/departments/chbe/). I study water filtration membranes using computational tools.
 ---
 
 # Research
-
-### Understanding salt rejection mechanism in polyamide membranes using molecular dynamics simulations
-
-Details to be populated soon...
 
 ### Development of an in-silico polymerization software for amorphous polymers
 
 Details to be populated soon ...
 
+### Understanding fouling mechanism of polyamide membranes using molecular dynamics simulations
 
+Details to be populated soon...
 
+### Data-driven design of fouling-resistant membranes
+
+Details to be populated soon...
+
+### Enhanced sampling methods for molecular simulations using machine learning
+
+Details to be populated soon...
+
+### Development of high-throughput methods for studying ion selectivity in membranes
+
+Details to be populated soon...
 ---
 
 # Recent blog posts
