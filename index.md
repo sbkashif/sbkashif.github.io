@@ -27,13 +27,10 @@ Details to be populated soon...
 
 Details to be populated soon...
 
-### Enhanced sampling methods for molecular simulations using machine learning
-
-Details to be populated soon...
-
 ### Development of high-throughput methods for studying ion selectivity in membranes
 
 Details to be populated soon...
+
 ---
 
 # Recent blog posts
