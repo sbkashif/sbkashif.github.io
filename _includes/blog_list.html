@@ -1,0 +1,17 @@
+<div class="blog-preview">
+  {% for post in site.posts limit: include.limit %}
+    <div class="blog-item">
+      <h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
+      <p class="post-date">{{ post.date | date: site.minima.date_format }}</p>
+      {% if include.show_excerpt != false %}
+        {% if post.content contains '<!--more-->' %}
+          {% assign excerpt_parts = post.content | split: '<!--more-->' %}
+          <p>{{ excerpt_parts[0] | strip_html }}</p>
+        {% else %}
+          <p>{{ post.excerpt | strip_html }}</p>
+        {% endif %}
+      {% endif %}
+      <a href="{{ post.url }}" class="read-more">Read More</a>
+    </div>
+  {% endfor %}
+</div>

@@ -1,0 +1,20 @@
+<!-- filepath: /Users/salmanbinkashif/codes/sbkashif.github.io/_includes/portfolio_grid.html -->
+<div class="project-grid">
+  {% assign portfolio_items = site.portfolio | sort: 'date' | reverse %}
+  {% for project in portfolio_items limit: include.limit %}
+    <div class="project-card">
+      <a href="{{ project.url }}">
+        <img src="{{ project.thumbnail }}" alt="{{ project.title }}">
+        <h3>{{ project.title }}</h3>
+      </a>
+      {% if include.show_excerpt != false %}
+        {% if project.content contains '<!--more-->' %}
+          {% assign excerpt_parts = project.content | split: '<!--more-->' %}
+          <p>{{ excerpt_parts[0] | strip_html }}</p>
+        {% else %}
+          <p>{{ project.excerpt | strip_html }}</p>
+        {% endif %}
+      {% endif %}
+    </div>
+  {% endfor %}
+</div>

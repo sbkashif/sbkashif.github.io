@@ -1,0 +1,25 @@
+<!-- filepath: /Users/salmanbinkashif/codes/sbkashif.github.io/_includes/research_grid.html -->
+<div class="project-grid">
+  {% assign research_items = site.research | default: empty_array %}
+  {% if research_items.size > 0 %}
+    {% assign sorted_items = research_items | sort: 'date' | reverse %}
+    {% for item in sorted_items limit: include.limit %}
+      <div class="project-card">
+        <a href="{{ item.url }}">
+          <img src="{{ item.thumbnail }}" alt="{{ item.title }}">
+          <h3>{{ item.title }}</h3>
+        </a>
+        {% if include.show_excerpt != false %}
+          {% if item.content contains '<!--more-->' %}
+            {% assign excerpt_parts = item.content | split: '<!--more-->' %}
+            <p>{{ excerpt_parts[0] | strip_html }}</p>
+          {% else %}
+            <p>{{ item.excerpt | strip_html }}</p>
+          {% endif %}
+        {% endif %}
+      </div>
+    {% endfor %}
+  {% else %}
+    <p>No research items are available at this time.</p>
+  {% endif %}
+</div>

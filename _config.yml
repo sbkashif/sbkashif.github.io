@@ -5,55 +5,63 @@ author:
 description: > # this means to ignore newlines until "show_excerpts:"
     This is Salman's personal webpage. The page features the details of his work, and the blogs he posts occasionally. 
 
-show_excerpts: false # set to true to show excerpts on the homepage
+show_excerpts: true # set to true to show excerpts on the homepage
 
 # Minima date format
 # refer to https://shopify.github.io/liquid/filters/date/ if you want to customize this
 minima:
   date_format: "%b %-d, %Y"
-
   # generate social links in footer
   social_links:
     twitter: salman_kashif21
     github:  sbkashif
-    # devto: jekyll
-    # dribbble: jekyll
-    # facebook: jekyll
-    # flickr:   jekyll
-    # instagram: jekyll
     linkedin: salmanbinkashif
-    # pinterest: jekyll
-    # youtube: jekyll
-    # youtube_channel: UC8CXR0-3I70i1tfPg1PAE1g
-    # youtube_channel_name: CloudCannon
-    # telegram: jekyll
-    # googleplus: +jekyll
-    # microdotblog: jekyll
-    # keybase: jekyll
-
-    # Mastodon instances
-    # mastodon:
-    # - username: jekyll
-    #   instance: example.com
-    # - username: jekyll2
-    #   instance: example.com
-
-    # GitLab instances
-    # gitlab:
-    # - username: jekyll
-    #   instance: example.com
-    # - username: jekyll2
-    #   instance: example.com
 
 # If you want to link only specific pages in your header, uncomment
 # this and add the path to the pages in order as they should show up
 header_pages:
  - about.md
+ - research.md
+ - portfolio.md
  - resume.md
  - posts.md
+ 
+# Collections
+collections:
+  portfolio:
+    output: true
+    permalink: /portfolio/:path/
+  research:
+    output: true
+    permalink: /research/:path/
+
+defaults:
+  - scope:
+      path: ""
+      type: "portfolio"
+    values:
+      layout: "portfolio_item"
+  - scope:
+      path: ""
+      type: "research"
+    values:
+      layout: "research_item"
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+
+# Project display settings
+project_thumbnail_height: 120px
+portfolio_items_per_page: 3
+blog_posts_per_page: 3
+
+# Set excerpt separator for blog posts and portfolio items
+excerpt_separator: <!--more-->
+
 # Build settings
 theme: minima
-
 
 plugins:
  - jekyll-feed
