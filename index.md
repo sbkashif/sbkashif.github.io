@@ -1,37 +1,42 @@
 ---
-#
-# By default, content added below the "---" mark will appear in the home page
-# between the top bar and the list of recent posts.
-# To change the home page layout, edit the _layouts/home.html file.
-# See: https://jekyllrb.com/docs/themes/#overriding-theme-defaults
-#
 layout: home
 ---
 
 ![profile](/assets/profile.png#profile)
 
-## Hello! I am Salman, a recent PhD graduate from [Prof. Sapna Sarupria's](https://sarupriagroup.github.io) group at [Clemson ChBE](https://www.clemson.edu/cecas/departments/chbe/). I study water filtration membranes using computational tools.
----
+## Hello! I'm Salman, currently a Postdoctoral Researcher at SUNY Buffalo.
 
-# Research
+My postdoctoral work with [Prof. Kaihang Shi](https://shiresearchgroup.github.io) focus on understanding selectivity mechanisms towards energy storage and chemical separations applications using molecular simulations and machine learning. I earned my PhD from Clemson University under [Prof. Sapna Sarupria's](https://sarupriagroup.github.io) guidance where I specialized in investigating fouling mechanisms in polyamdie membranes using molecular dynamics simulations and machine learning. 
 
-### Development of an in-silico polymerization software for amorphous polymers
+### Expertise
+- Molecular dynamics simulations
+- Monte Carlo simulations
+- Machine learning for materials science
+- Software development for computational chemistry
 
-Details to be populated soon ...
-
-### Understanding fouling mechanism of polyamide membranes using molecular dynamics simulations
-
-Details to be populated soon...
-
-### Data-driven design of fouling-resistant membranes
-
-Details to be populated soon...
-
-### Development of high-throughput methods for studying ion selectivity in membranes
-
-Details to be populated soon...
+[View CV](/resume){: .view-all-button}
 
 ---
 
-# Recent blog posts
+## Research
+
+{% include research_grid.html limit=4 show_excerpt=false %}
+
+[View All Research Projects](/research){: .view-all-button}
+
+---
+
+## Portfolio
+
+{% include portfolio_grid.html limit=3 show_excerpt=false %}
+
+[View Full Portfolio](/portfolio){: .view-all-button}
+
+---
+
+## Recent Blog Posts
+
+{% include blog_list.html limit=3 show_excerpt=false %}
+
+[View All Posts](/posts){: .view-all-button}
 
