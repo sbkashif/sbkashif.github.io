@@ -15,7 +15,7 @@ ML-CPP is a high-performance machine learning library that combines the computat
 
 <!--more-->
 
-## Key Achievements
+## Key Highlights
 
 - Designed and implemented a modular C++ machine learning library with Python bindings
 - Successfully engineered two core algorithms:
@@ -41,7 +41,7 @@ ML-CPP is a high-performance machine learning library that combines the computat
 
 ### Performance Analysis
 
-![Performance Comparison](/assets/images/sklearn_mlp_boundary.png)
+![Performance Comparison](/assets/images/mlcpp_scikitlearn_logreg_compare.png)
 
 - **Neural Network Accuracy**: 95.67% accuracy (compared to scikit-learn's 96.33%)
 - **Activation Functions**: Tanh achieved 100% accuracy on XOR problem, while Sigmoid and ReLU reached 75%
