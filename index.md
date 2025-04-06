@@ -6,7 +6,7 @@ layout: home
 
 ## Hello! I'm Salman, currently a Postdoctoral Researcher at SUNY Buffalo.
 
-My postdoctoral work with [Prof. Kaihang Shi](https://shiresearchgroup.github.io) focus on understanding selectivity mechanisms towards energy storage and chemical separations applications using molecular simulations and machine learning. I earned my PhD from Clemson University under [Prof. Sapna Sarupria's](https://sarupriagroup.github.io) guidance where I specialized in investigating fouling mechanisms in polyamdie membranes using molecular dynamics simulations and machine learning. 
+My postdoctoral work with [Prof. Kaihang Shi](https://shiresearchgroup.github.io) focuses on understanding selectivity mechanisms in zeolitic membranes toward applications in energy storage and chemical seperations. Prior to this, I completed my PhD from Clemson University under [Prof. Sapna Sarupria's](https://sarupriagroup.github.io) guidance where I specialized in investigating fouling mechanisms in polyamdie membranes using molecular dynamics simulations and machine learning. 
 
 ### Expertise
 - Molecular dynamics simulations
