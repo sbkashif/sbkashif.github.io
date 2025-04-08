@@ -15,7 +15,7 @@ My postdoctoral work with [Prof. Kaihang Shi](https://shiresearchgroup.github.io
 - Data-driven discovery of materials with target properties
 - Software development for computational chemistry applications
 - High-throughput simulations for dataset generation
-- Machine learning interatomic potentials (have used only off-the-shelf modles for now)
+- Machine learning interatomic potentials (have used only off-the-shelf modules for now)
 
 [View CV](/resume){: .view-all-button}
 
