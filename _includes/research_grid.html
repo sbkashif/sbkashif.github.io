@@ -6,7 +6,13 @@
     {% for item in sorted_items limit: include.limit %}
       <div class="project-card">
         <a href="{{ item.url }}">
-          <img src="{{ item.thumbnail }}" alt="{{ item.title }}">
+          {% if item.thumbnail %}
+            {% if item.thumbnail contains '://' %}
+              <img src="{{ item.thumbnail }}" alt="{{ item.title }}">
+            {% else %}
+              <img src="/{{ item.thumbnail }}" alt="{{ item.title }}">
+            {% endif %}
+          {% endif %}
           <h3>{{ item.title }}</h3>
         </a>
         {% if include.show_excerpt != false %}
