@@ -62,8 +62,23 @@ excerpt_separator: <!--more-->
 
 # Build settings
 theme: minima
-
 plugins:
  - jekyll-feed
  - jekyll-seo-tag
+
+# Language icons mapping
+language_icons:
+  #"C++": "/assets/images/cpp_icon.svg"
+  #"Python": "/assets/images/python_icon.svg"
+  # Add more languages and their icon paths as needed
+
+# Exclude from processing
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
 

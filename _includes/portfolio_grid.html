@@ -6,7 +6,21 @@
       <a href="{{ project.url }}">
         <img src="{{ project.thumbnail }}" alt="{{ project.title }}">
         <h3>{{ project.title }}</h3>
+        {% if project.languages %}
+          <div class="language-container">
+            {% for language in project.languages %}
+              {% if language[1].image %}
+                <img src="{{ language[1].image }}" alt="{{ language[0] }}" class="language-icon" title="{{ language[0] }}">
+              {% elsif site.language_icons and site.language_icons[language] %}
+                <img src="{{ site.language_icons[language] }}" alt="{{ language }}" class="language-icon" title="{{ language }}">
+              {% else %}
+                <span class="language-text">{{ language }}</span>
+              {% endif %}
+            {% endfor %}
+          </div>
+        {% endif %}
       </a>
+      
       {% if include.show_excerpt != false %}
         {% if project.content contains '<!--more-->' %}
           {% assign excerpt_parts = project.content | split: '<!--more-->' %}

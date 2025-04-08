@@ -6,6 +6,7 @@ keywords: molecular dynamics, C++, simulation, Lennard-Jones
 description: "A modular C++ library for molecular dynamics simulations of Lennard-Jones particles."
 thumbnail: https://raw.githubusercontent.com/isocpp/logos/master/cpp_logo.png
 thumbnail_alt: "C++ Programming Language Logo"
+languages: ["C++"]
 ---
 
 A modular C++ library for molecular dynamics simulations of Lennard-Jones particles. This project implements a basic MD engine that focuses on modularity and extensibility, using modern C++ practices.

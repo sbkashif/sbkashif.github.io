@@ -5,6 +5,7 @@ permalink: /portfolio/mlcpp/
 keywords: machine learning, C++, Python, pybind11, scikit-learn, neural networks, linear regression
 thumbnail: https://raw.githubusercontent.com/isocpp/logos/master/cpp_logo.png
 thumbnail_alt: "C++ Programming Language Logo"
+languages: ["C++", "Python"]
 ---
 
 [![GitHub Repository](https://img.shields.io/badge/GitHub-Repository-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/sbkashif/mlcpp)
