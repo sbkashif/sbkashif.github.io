@@ -1,173 +1,220 @@
 ---
 layout: page
-title: "Lennard-Jones Molecular Dynamics Simulation"
+title: "Molecular Dynamics Simulation with Lennard-Jones Potential"
 permalink: /portfolio/ljmd/
-keywords: molecular dynamics, C++, simulation, Lennard-Jones
-description: "A modular C++ library for molecular dynamics simulations of Lennard-Jones particles."
-thumbnail: https://raw.githubusercontent.com/isocpp/logos/master/cpp_logo.png
+keywords: C++, molecular dynamics, Lennard-Jones potential, C++, simulation, unit testing
+thumbnail: https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Graph_of_Lennard-Jones_potential.png/1599px-Graph_of_Lennard-Jones_potential.png?20201007144459
 thumbnail_alt: "C++ Programming Language Logo"
 languages: ["C++"]
 ---
 
-A modular C++ library for molecular dynamics simulations of Lennard-Jones particles. This project implements a basic MD engine that focuses on modularity and extensibility, using modern C++ practices.
-<!--more-->
+*Thumbnail image credits: Lennard-Jones potential graph, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Graph_of_Lennard-Jones_potential.png)*
 
-## Features
+[![GitHub Repository](https://img.shields.io/badge/GitHub-Repository-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/sbkashif/lennard-jones-cpp)
 
-- Simulation of Lennard-Jones fluids in 3D with periodic boundary conditions
-- NVE ensemble simulation using Velocity Verlet integrator
-- Modular design that enables easy extension with:
-  - Different integrators
-  - Various thermostats and barostats
-  - Additional force fields
-- XYZ file output for visualization with external tools
-- Performance optimized force calculation
-- Configurable simulation parameters via config file
+## Lennard-Jones Molecular Dynamics Simulation
 
-## Requirements
+This project implements a molecular dynamics simulation framework using the Lennard-Jones potential to model particle interactions. The modular C++ codebase features comprehensive unit testing and efficient algorithms for simulating atomic systems.
 
-- C++17 compatible compiler (GCC, Clang, MSVC)
+## Introduction
+
+Molecular Dynamics (MD) simulations are a powerful computational technique used in physics, chemistry, and materials science to study the physical movements of atoms and molecules. In this blog post, I'll walk through the installation and testing of a modular C++ implementation of a Lennard-Jones MD simulation.
+
+This project implements a basic MD engine that simulates particles interacting via the Lennard-Jones potential, which is commonly used to model noble gases and other simple fluids. The code is designed with a focus on modularity and extensibility, making it an excellent foundation for more complex simulations.
+
+## Installation Guide
+
+### Prerequisites
+
+Before we begin, make sure you have the following installed on your system:
+
+- C++17 compatible compiler (GCC, Clang, or MSVC)
 - CMake 3.14 or higher
-- (Optional) Google Test for running unit tests
+- Git (for cloning the repository)
 
-## Building the Project
+### Installation Steps
+
+1. **Clone the repository**
+
+   ```bash
+   git clone https://github.com/yourusername/lennard-jones-cpp.git
+   cd lennard-jones-cpp
+   ```
+
+2. **Create and enter build directory**
+
+   ```bash
+   mkdir -p build
+   cd build
+   ```
+
+3. **Configure and build the project**
+
+   ```bash
+   cmake ..
+   make
+   ```
+
+   This will compile the main executable `ljmd` along with the test programs.
+
+## Running Unit Tests
+
+The project includes comprehensive unit tests built with Google Test. After building the project, you can run the tests to ensure everything is working correctly.
+
+### Vector Tests
+
+These tests verify the functionality of the 3D vector class used in the simulation:
 
 ```bash
-# Clone the repository
-git clone https://github.com/yourusername/lennard-jones-cpp.git
-cd lennard-jones-cpp
-
-# Create and enter build directory
-mkdir -p build
-cd build
-
-# Configure and build
-cmake ..
-make
+cd build/test
+./vector_test
 ```
+
+#### Results:
+
+```
+[==========] Running 4 tests from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 4 tests from Vector3DTest
+[ RUN      ] Vector3DTest.Construction
+[       OK ] Vector3DTest.Construction (0 ms)
+[ RUN      ] Vector3DTest.ArithmeticOperations
+[       OK ] Vector3DTest.ArithmeticOperations (0 ms)
+[ RUN      ] Vector3DTest.VectorProperties
+[       OK ] Vector3DTest.VectorProperties (0 ms)
+[ RUN      ] Vector3DTest.PeriodicBoundary
+[       OK ] Vector3DTest.PeriodicBoundary (0 ms)
+[----------] 4 tests from Vector3DTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 4 tests from 1 test suite ran. (0 ms total)
+[  PASSED  ] 4 tests.
+```
+
+All tests for the Vector3D class have passed successfully, confirming that:
+- Vector construction works correctly
+- Arithmetic operations (addition, subtraction, etc.) function as expected
+- Vector properties (norm, dot product, etc.) are calculated correctly
+- Periodic boundary conditions are properly applied
+
+### Particle Tests
+
+These tests verify the functionality of the Particle class, which represents individual particles in the simulation:
+
+```bash
+cd build/test
+./particle_test
+```
+
+#### Results:
+
+```
+[==========] Running 3 tests from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 3 tests from ParticleTest
+[ RUN      ] ParticleTest.Construction
+[       OK ] ParticleTest.Construction (0 ms)
+[ RUN      ] ParticleTest.Methods
+[       OK ] ParticleTest.Methods (0 ms)
+[ RUN      ] ParticleTest.Update
+[       OK ] ParticleTest.Update (0 ms)
+[----------] 3 tests from ParticleTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 3 tests from 1 test suite ran. (0 ms total)
+[  PASSED  ] 3 tests.
+```
+
+All tests for the Particle class have passed successfully, confirming that:
+- Particle objects are constructed correctly
+- Methods to get and set particle properties work as expected
+- The update mechanism for particle positions and velocities functions correctly
 
 ## Running a Simulation
 
-The simulation can be run with various parameters:
+Let's run a sample simulation to see the program in action.
 
 ```bash
-./ljmd [options]
-
-Options:
-  -n, --num-particles   Number of particles (default: 125)
-  -d, --density         System density in reduced units (default: 0.8)
-  -t, --temperature     Initial temperature in reduced units (default: 1.0)
-  -dt, --timestep       Integration time step (default: 0.005)
-  -s, --steps           Number of simulation steps (default: 5000)
-  -o, --output          Output interval (default: 100)
-  -c, --config          Path to configuration file
+cd build
+./ljmd -n 125 -s 1000 -o 100
 ```
 
-Example:
+This runs a simulation with 125 particles for 1000 steps, outputting data every 100 steps.
 
-```bash
-./ljmd -n 512 -d 0.8 -t 1.0 -s 10000
-./ljmd -c path/to/config.ini
+### Simulation Results
+
+The simulation ran with the following parameters:
+- 125 particles
+- Density: 0.8 (in reduced units)
+- Initial temperature: 1.0 (in reduced units)
+- Timestep: 0.001
+- Cutoff radius: 2.5
+
+#### Equilibration Phase
+
+During the equilibration phase, the system stabilizes:
+
+```
+Starting equilibration phase...
+Equilibration: 100/1000, T = 0.523727, E = -406.848
+Equilibration: 200/1000, T = 0.717055, E = -406.845
+Equilibration: 300/1000, T = 1.07157, E = -406.845
+...
+Equilibration: 1000/1000, T = 0.92201, E = -406.849
+Equilibration completed.
 ```
 
-## Configuration Options
+The temperature fluctuates initially but eventually stabilizes around 0.92, which is close to the target temperature of 1.0. The total energy remains stable around -406.85 (in reduced units).
 
-The simulation can be configured using a config.ini file. Below is a list of supported configuration options:
+#### Production Phase
 
-### System Parameters
-- `num_particles`: Number of particles in the simulation
-- `density`: Density in reduced units
-- `temperature`: Initial temperature in reduced units
-- `cutoff_radius`: Cutoff radius for LJ potential
+During the production phase, we collect data for analysis:
 
-### Simulation Parameters
-- `timestep`: Integration timestep
-- `equilibration_steps`: Number of equilibration steps
-- `production_steps`: Number of production steps
-- `output_interval`: How often to output data
-
-### Output Parameters
-- `trajectory_file`: Path to trajectory output file
-- `properties_file`: Path to properties output file
-- `energy_file`: Path to energy components output file
-
-### Visualization Options
-- `write_trajectory`: Whether to write trajectory file
-- `trajectory_interval`: How often to write frames to trajectory file
-
-### Advanced Options
-- `integrator`: Integration algorithm (currently only velocity-verlet is supported)
-- `thermostat`: Thermostat type (none, berendsen)
-- `random_seed`: Seed for random number generator
-- `energy_tolerance`: Maximum allowed energy drift before warning
-
-## Example Configuration File
-
-```ini
-# Lennard-Jones MD Simulation Configuration
-
-# System parameters
-num_particles = 125    # Number of particles
-density = 0.8          # Density in reduced units 
-temperature = 1.0      # Initial temperature in reduced units
-cutoff_radius = 2.5    # Cutoff radius for LJ potential
-
-# Simulation parameters
-timestep = 0.001       # Integration timestep
-equilibration_steps = 1000  # Number of equilibration steps
-production_steps = 5000     # Number of production steps
-output_interval = 50   # How often to output data
-
-# Output parameters
-trajectory_file = "trajectory.xyz"  # Trajectory output file
-properties_file = "properties.dat"  # Properties output file
-energy_file = "energy.dat"          # Energy components output file
-
-# Visualization options
-write_trajectory = true     # Whether to write trajectory file
-trajectory_interval = 100   # How often to write frames to trajectory file
-
-# Advanced options
-integrator = "velocity-verlet"  # Integration algorithm
-thermostat = "none"      # Thermostat (none, berendsen)
-random_seed = 42         # Seed for random number generator
-energy_tolerance = 0.01  # Maximum allowed energy drift before warning
+```
+Step    50, T = 0.9570, E = -4.068482e+02, drift = 1.449238e-06
+Step   100, T = 0.9507, E = -4.068487e+02, drift = 2.873342e-07
+...
+Step  5000, T = 0.9188, E = -4.068453e+02, drift = 8.592990e-06
 ```
 
-## Output Files
+The temperature fluctuates naturally around 0.95, while the total energy remains remarkably stable. The energy drift (a measure of energy conservation) stays below 1.5×10^-5 throughout the simulation, indicating excellent numerical stability.
 
-- `initial.xyz` - Initial configuration of the system
-- `final.xyz` - Final configuration of the system
-- `trajectory.xyz` - Complete trajectory for visualization
-- `properties.dat` - Time series of system properties (temperature, energy, etc.)
-- `energy.dat` - Detailed energy components over time
+#### Performance
 
-## Extending the Project
+The simulation completed in approximately 5.69 seconds for 5000 time steps with 125 particles, which is quite efficient for a small-scale simulation.
 
-### Adding a New Integrator
+## Analysis of Results
 
-1. Create a new class that inherits from the `Integrator` base class
-2. Implement the `step()` method to update the system according to your integration scheme
-3. Register the new integrator in the main program
+### Energy Conservation
 
-### Adding a Thermostat
+The total energy drift of 8.59×10^-6 over 5000 steps is extremely small (about 0.000002% of the total energy), indicating excellent energy conservation. This confirms that the velocity Verlet integrator is working correctly.
 
-1. Create a new class that inherits from a `Thermostat` base class
-2. Implement the temperature control algorithm
-3. Modify the integration step to include temperature regulation
+### Temperature Stability
 
-## Visualization
+The temperature fluctuates around 0.92-0.95, which is close to the target temperature of 1.0. These fluctuations are expected in the NVE ensemble where energy, not temperature, is conserved.
 
-The output XYZ files can be visualized with tools like:
-- VMD
-- OVITO
-- PyMOL
+### System Stability
 
-## License
+The simulation maintains stable particle interactions throughout the run, with no anomalies in energy or temperature. This suggests the Lennard-Jones potential and force calculations are implemented correctly.
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+## Visualization and Output Files
 
-## Acknowledgments
+The simulation generates several output files:
 
-- This project uses reduced Lennard-Jones units where σ = ε = m = 1
-- The Velocity Verlet implementation follows the algorithm described in Frenkel & Smit's "Understanding Molecular Simulation"
+- `trajectory.xyz`: Contains the positions of all particles at regular intervals, suitable for visualization with tools like VMD or OVITO
+- `properties.dat`: Records system properties like temperature and energy over time
+- `energy.dat`: Contains detailed energy components (kinetic, potential, total)
+- `initial.xyz` and `final.xyz`: The starting and ending configurations of the system
+
+## Extending the Simulation
+
+The modular design makes it easy to extend this simulation. Some ideas for future enhancements include:
+
+1. **Adding thermostats** - Implement Nose-Hoover or Berendsen thermostats for temperature control
+2. **Different integrators** - Add alternatives to Velocity-Verlet, such as leapfrog or predictor-corrector methods
+3. **Force field extensions** - Implement more complex potentials beyond Lennard-Jones
+4. **Parallelization** - Add OpenMP or MPI support for faster simulations of larger systems
+
+## Conclusion
+
+The Lennard-Jones MD simulation project was an attempt to cement my understanding of MD simulation concepts, and getting used to unit testing in C++. The project successfully implements a basic MD engine with a focus on modularity and extensibility. The simulation runs efficiently, conserves energy, and produces stable results, making it a solid foundation for further exploration in molecular dynamics.
