@@ -1,24 +1,20 @@
 ---
-layout: page
+layout: portfolio_item
 title: "Molecular Dynamics Simulation with Lennard-Jones Potential"
 permalink: /portfolio/ljmd/
 keywords: C++, molecular dynamics, Lennard-Jones potential, C++, simulation, unit testing
 thumbnail: https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Graph_of_Lennard-Jones_potential.png/1599px-Graph_of_Lennard-Jones_potential.png?20201007144459
 thumbnail_alt: "C++ Programming Language Logo"
+thumbnail_credit: "Lennard-Jones potential graph, Wikimedia Commons"
+thumbnail_credit_url: "https://commons.wikimedia.org/wiki/File:Graph_of_Lennard-Jones_potential.png"
 languages: ["C++"]
 ---
 
-*Thumbnail image credits: Lennard-Jones potential graph, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Graph_of_Lennard-Jones_potential.png)*
-
 [![GitHub Repository](https://img.shields.io/badge/GitHub-Repository-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/sbkashif/lennard-jones-cpp)
 
-## Lennard-Jones Molecular Dynamics Simulation
+This project implements a molecular dynamics simulation framework using the Lennard-Jones potential to model particle interactions. Molecular Dynamics (MD) simulations are a powerful computational technique used in physics, chemistry, and materials science to study the physical movements of atoms and molecules.
 
-This project implements a molecular dynamics simulation framework using the Lennard-Jones potential to model particle interactions. The modular C++ codebase features comprehensive unit testing and efficient algorithms for simulating atomic systems.
-
-## Introduction
-
-Molecular Dynamics (MD) simulations are a powerful computational technique used in physics, chemistry, and materials science to study the physical movements of atoms and molecules. In this blog post, I'll walk through the installation and testing of a modular C++ implementation of a Lennard-Jones MD simulation.
+<!--more-->
 
 This project implements a basic MD engine that simulates particles interacting via the Lennard-Jones potential, which is commonly used to model noble gases and other simple fluids. The code is designed with a focus on modularity and extensibility, making it an excellent foundation for more complex simulations.
 
