@@ -54,7 +54,7 @@ defaults:
 
 # Project display settings
 project_thumbnail_height: 120px
-portfolio_items_per_page: 3
+portfolio_items_per_page: 4
 blog_posts_per_page: 3
 
 # Set excerpt separator for blog posts and portfolio items
@@ -68,8 +68,8 @@ plugins:
 
 # Language icons mapping
 language_icons:
-  #"C++": "/assets/images/cpp_icon.svg"
-  #"Python": "/assets/images/python_icon.svg"
+  #"C++": "https://raw.githubusercontent.com/isocpp/logos/master/cpp_logo.png "
+  #"Python": "https://s3.dualstack.us-east-2.amazonaws.com/pythondotorg-assets/media/files/python-logo-only.svg"
   # Add more languages and their icon paths as needed
 
 # Exclude from processing

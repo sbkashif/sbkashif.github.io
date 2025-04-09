@@ -1,0 +1,55 @@
+{%- assign social = site.minima.social_links -%}
+
+<ul class="social-media-list inline-list">
+    <li><a rel="me" href="/resume" title="View CV" class="social-btn"><b>View CV</b></a></li>
+    {%- if social.github -%}<li><a rel="me" href="https://github.com/{{ social.github | cgi_escape | escape }}" title="{{ social.github | escape }}" class="social-btn"><svg class="svg-icon"><use xlink:href="{{ '/assets/minima-social-icons.svg#github' | relative_url }}"></use></svg></a></li>{%- endif -%}
+  {%- if social.linkedin -%}<li><a rel="me" href="https://www.linkedin.com/in/{{ social.linkedin | cgi_escape | escape }}" title="{{ social.linkedin | escape }}" class="social-btn"><svg class="svg-icon"><use xlink:href="{{ '/assets/minima-social-icons.svg#linkedin' | relative_url }}"></use></svg></a></li>{%- endif -%}
+  {%- if social.twitter -%}<li><a rel="me" href="https://twitter.com/{{ social.twitter | cgi_escape | escape }}" title="{{ social.twitter | escape }}" class="social-btn"><svg class="svg-icon"><use xlink:href="{{ '/assets/minima-social-icons.svg#twitter' | relative_url }}"></use></svg></a></li>{%- endif -%}
+  {%- if social.stackoverflow -%}<li><a rel="me" href="https://stackoverflow.com/users/{{ social.stackoverflow | cgi_escape | escape }}" title="{{ social.stackoverflow | escape }}" class="social-btn"><svg class="svg-icon"><use xlink:href="{{ '/assets/minima-social-icons.svg#stackoverflow' | relative_url }}"></use></svg></a></li>{%- endif -%}
+</ul>
+
+<style>
+.social-media-list {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  margin: 0 auto;
+  padding: 0;
+  gap: 8px;
+  justify-content: center;
+  width: 100%;
+}
+
+.social-media-list li {
+  margin: 0;
+}
+
+.social-btn {
+  display: flex;
+  align-items: center;
+  border-radius: 5%;
+  background-color: #f2f2f2;
+  color: #b94700;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.social-btn:hover {
+  background-color: #e0e0e0;
+  text-decoration: none;
+}
+
+.svg-icon {
+  width: 16px; /* Further increased icon size */
+  height: 16px; /* Further increased icon size */
+  display: flex;
+  margin-right: 0; /* Removed right margin since we don't have text */
+  vertical-align: middle;
+}
+
+.btn-text {
+  font-size: 100%;
+  font-weight: 500;
+}
+
+</style>
