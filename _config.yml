@@ -4,7 +4,7 @@ author:
   email: sbinkas@clemson.edu
 description: > # this means to ignore newlines until "show_excerpts:"
     This is Salman's personal webpage. The page features the details of his work, and the blogs he posts occasionally. 
-
+show_powered_by: true # set to true to show "Powered by Jekyll" in the footer
 show_excerpts: true # set to true to show excerpts on the homepage
 
 # Minima date format

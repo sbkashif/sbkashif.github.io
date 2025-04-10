@@ -161,6 +161,15 @@
   width: calc(100% - (#{$spacing-unit} / 2));
 }
 
+/* Add styling for the powered-by section */
+.powered-by {
+  width: 100%;
+  text-align: center;
+  margin-top: 20px;
+  font-size: 0.9em;
+  color: $brand-color;
+}
+
 @media screen and (min-width: $on-large) {
   .footer-col-1 {
     width: calc(35% - (#{$spacing-unit} / 2));

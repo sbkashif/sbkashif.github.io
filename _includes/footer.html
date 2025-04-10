@@ -32,6 +32,13 @@
       {%- include social.html -%}
     </div>
 
+    <!-- Add the "Powered by" text here -->
+    {% if site.show_powered_by %}
+    <div class="powered-by">
+      <p>Powered by <a href="https://jekyllrb.com/">Jekyll</a> &amp; <a href="https://github.com/jekyll/minima">Minima</a></p>
+    </div>
+    {% endif %}
+
   </div>
 
 </footer>
