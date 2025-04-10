@@ -9,8 +9,13 @@ thumbnail_credit: "Lennard-Jones potential graph, Wikimedia Commons"
 thumbnail_credit_url: "https://commons.wikimedia.org/wiki/File:Graph_of_Lennard-Jones_potential.png"
 languages: ["C++"]
 ---
+<span class="attribution" style="color: gray; display: inline-block; margin-left: 0px;">Written with assistance from <a href="https://github.com/features/copilot" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/8/8a/GitHub_Copilot_logo.svg" class="logo" alt="GitHub Copilot" style="vertical-align: middle; margin-bottom: 3px;"/></a></span>
 
-[![GitHub Repository](https://img.shields.io/badge/GitHub-Repository-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/sbkashif/lennard-jones-cpp)
+[![GitHub Repository](https://img.shields.io/badge/GitHub-Repository-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/sbkashif/lennard-jones-cpp) 
+
+
+
+
 
 This project implements a molecular dynamics simulation framework using the Lennard-Jones potential to model particle interactions. Molecular Dynamics (MD) simulations are a powerful computational technique used in physics, chemistry, and materials science to study the physical movements of atoms and molecules.
 
