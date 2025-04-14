@@ -35,5 +35,9 @@ layout: default
     <img src="{{ page.featured_image }}" alt="{{ page.title }}" class="featured-image">
   {% endif %}
 
+  {% if page.ai_assistants %}
+    {% include ai_credits.html %}
+  {% endif %}
+  
   {{ content }}
 </article>

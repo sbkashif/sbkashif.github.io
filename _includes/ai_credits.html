@@ -1,0 +1,32 @@
+{% if page.ai_assistants %}
+<div class="ai-credits" style="color: gray; margin: 1rem 0;">
+  <span class="attribution">Written with assistance from:
+    {% for assistant in page.ai_assistants %}
+      {% case assistant.tool %}
+        {% when 'github-copilot' %}
+          <a href="{{ assistant.url | default: 'https://github.com/features/copilot' }}" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/8/8a/GitHub_Copilot_logo.svg" class="logo" alt="GitHub Copilot" style="vertical-align: middle; margin: 0 3px 3px 3px; height: 20px;"/>
+          </a>
+        {% when 'chatgpt' %}
+          <a href="{{ assistant.url | default: 'https://chat.openai.com' }}" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg" class="logo" alt="ChatGPT" style="vertical-align: middle; margin: 0 3px 3px 3px; height: 20px;"/>
+          </a>
+        {% when 'claude' %}
+          <a href="{{ assistant.url | default: 'https://www.anthropic.com/claude' }}" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/8/8a/Claude_AI_logo.svg" class="logo" alt="Claude" style="vertical-align: middle; margin: 0 3px 3px 3px; height: 20px;"/>
+          </a>
+        {% when 'perplexity' %}
+          <a href="{{ assistant.url | default: 'https://www.perplexity.ai/' }}" target="_blank">
+            <img src="https://r2cdn.perplexity.ai/pplx-full-logo-primary-dark%402x.png" class="logo" alt="Perplexity" style="vertical-align: middle; margin: 0 3px 3px 3px; height: 30px;"/>
+          </a>
+        {% when 'bard' %}
+          <a href="{{ assistant.url | default: 'https://gemini.google.com/' }}" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/e/e1/Google_Bard_logo.svg" class="logo" alt="Google Bard/Gemini" style="vertical-align: middle; margin: 0 3px 3px 3px; height: 20px;"/>
+          </a>
+        {% else %}
+          <a href="{{ assistant.url | default: '#' }}" target="_blank">{{ assistant.tool }}</a>
+      {% endcase %}
+    {% endfor %}
+  </span>
+</div>
+{% endif %}

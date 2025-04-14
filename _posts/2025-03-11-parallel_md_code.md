@@ -2,6 +2,9 @@
 layout: post
 title: 'Parallelizing a molecular dynamics code using MPI'
 permalink: _posts/:year/:month/:day/:title/
+ai_assistants:
+  - tool: chatgpt
+    url: https://openai.com/chatgpt
 ---
 
 I have recently started to learn about parallel computing. In this blog post today, I will share a simple example of how to parallelize a molecular dynamics (MD) simulation using the Message Passing Interface (MPI).

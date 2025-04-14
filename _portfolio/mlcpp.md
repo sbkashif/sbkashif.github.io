@@ -8,8 +8,12 @@ thumbnail_alt: "C++ Programming Language Logo"
 thumbnail_credit: "mikemacmarketing, Wikimedia Commons"
 thumbnail_credit_url: "https://commons.wikimedia.org/wiki/File:Artificial_Intelligence_%26_AI_%26_Machine_Learning.jpg"
 languages: ["C++", "Python"]
+ai_assistants:
+  - tool: github-copilot
+    url: https://github.com/features/copilot
+  - tool : claude
+    url: https://claude.ai
 ---
-<span class="attribution" style="color: gray; display: inline-block; margin-left: 0px;">Written with assistance from <a href="https://github.com/features/copilot" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/8/8a/GitHub_Copilot_logo.svg" class="logo" alt="GitHub Copilot" style="vertical-align: middle; margin-bottom: 3px;"/></a></span>
 
 [![GitHub Repository](https://img.shields.io/badge/GitHub-Repository-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/sbkashif/mlcpp)
 

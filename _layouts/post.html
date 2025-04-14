@@ -26,6 +26,10 @@ layout: default
       {%- endif -%}</p>
   </header>
 
+  {% if page.ai_assistants %}
+    {% include ai_credits.html %}
+  {% endif %}
+
   <div class="post-content e-content" itemprop="articleBody">
     {{ content }}
   </div>
