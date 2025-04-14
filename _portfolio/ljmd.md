@@ -131,6 +131,64 @@ All tests for the Particle class have passed successfully, confirming that:
 - Methods to get and set particle properties work as expected
 - The update mechanism for particle positions and velocities functions correctly
 
+### Energy Minimization Tests
+
+These tests verify the functionality of the energy minimization algorithms, which are crucial for preparing stable starting configurations:
+
+```bash
+cd build/test
+./minimizer_test
+```
+
+#### Results:
+
+```
+[==========] Running 3 tests from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 3 tests from MinimizerTest
+[ RUN      ] MinimizerTest.SteepestDescentReducesEnergy
+Starting energy minimization (Steepest Descent)
+Initial potential energy: 436.484
+Energy minimization completed.
+Final potential energy: -22.5244
+Energy improvement: 459.008
+[       OK ] MinimizerTest.SteepestDescentReducesEnergy (0 ms)
+[ RUN      ] MinimizerTest.MinimizerFactoryCreatesSteepestDescent
+Starting energy minimization (Steepest Descent)
+Initial potential energy: 436.484
+Energy minimization completed.
+Final potential energy: -22.5235
+Energy improvement: 459.007
+Starting energy minimization (Steepest Descent)
+Initial potential energy: -22.5235
+Energy minimization completed.
+Final potential energy: -22.5212
+Energy improvement: -0.00228585
+[       OK ] MinimizerTest.MinimizerFactoryCreatesSteepestDescent (0 ms)
+[ RUN      ] MinimizerTest.MinimizerConvergence
+Starting energy minimization (Steepest Descent)
+Initial potential energy: 436.484
+Energy minimization completed.
+Final potential energy: -22.5244
+Energy improvement: 459.008
+Starting energy minimization (Steepest Descent)
+Initial potential energy: -22.5244
+Energy minimization completed.
+Final potential energy: -22.5244
+Energy improvement: 8.75884e-07
+[       OK ] MinimizerTest.MinimizerConvergence (0 ms)
+[----------] 3 tests from MinimizerTest (2 ms total)
+[----------] Global test environment tear-down
+[==========] 3 tests from 1 test suite ran. (2 ms total)
+[  PASSED  ] 3 tests.
+```
+
+All tests for the energy minimization functionality have passed successfully, confirming that:
+- The steepest descent algorithm effectively reduces high-energy configurations
+- The minimizer factory properly creates minimizer instances based on configuration
+- The minimization process converges to a stable energy state
+- Energy improvement is substantial (in this case, a reduction of 459 energy units!)
+
 ## Running a Simulation
 
 Let's run a sample simulation to see the program in action.
@@ -182,7 +240,48 @@ The temperature fluctuates naturally around 0.95, while the total energy remains
 
 #### Performance
 
-The simulation completed in approximately 5.69 seconds for 5000 time steps with 125 particles, which is quite efficient for a small-scale simulation.
+The simulation completed in approximately 5.69 seconds for 5000 time steps with 125 particles, which is decent for a small-scale simulation.
+
+## Energy Minimization
+
+A critical part of molecular dynamics simulations is achieving a stable initial configuration before running production simulations. The energy minimization module addresses this need:
+
+### Purpose
+
+Energy minimization helps:
+- Remove unfavorable steric clashes from initial configurations
+- Relax high-energy regions that could cause simulation instability
+- Establish a more physically realistic starting point for dynamics
+- Improve overall simulation stability and reliability
+
+### Implementation
+
+The project implements a modular energy minimization framework:
+
+- **Base Minimizer Class**: A template method pattern that defines the general minimization workflow
+- **Steepest Descent Algorithm**: A first-order minimization algorithm that follows the negative gradient of energy
+- **Minimizer Factory**: Creates appropriate minimizers based on configuration settings
+
+### Configuration
+
+Energy minimization can be enabled and configured through the config.ini file:
+
+```ini
+# Energy minimization parameters
+minimize_energy = true               # Whether to perform energy minimization
+minimization_algorithm = "steepest"  # Algorithm: "steepest" or "conjugate" (future)
+minimization_steps = 1000            # Maximum number of minimization steps
+minimization_tolerance = 1e-6        # Energy convergence criterion
+minimization_step_size = 0.01        # Initial step size for minimization
+```
+
+### Minimization Results
+
+In our tests, the energy minimization was highly effective:
+- Starting from a high-energy configuration (436.484 energy units)
+- Converging to a stable, low-energy state (-22.5244 energy units)
+- Total energy improvement of 459.008 energy units
+- Final configuration with optimized particle spacing around the Lennard-Jones minimum
 
 ## Analysis of Results
 
@@ -205,17 +304,33 @@ The simulation generates several output files:
 - `trajectory.xyz`: Contains the positions of all particles at regular intervals, suitable for visualization with tools like VMD or OVITO
 - `properties.dat`: Records system properties like temperature and energy over time
 - `energy.dat`: Contains detailed energy components (kinetic, potential, total)
-- `initial.xyz` and `final.xyz`: The starting and ending configurations of the system
+- `initial.xyz`: The starting configuration of the system
+- `minimized.xyz`: Configuration after energy minimization (if enabled)
+- `final.xyz`: The ending configuration of the system
 
-## Extending the Simulation
+
+## Timeline of Development
+
+| Date | Milestone | Description |
+|------|-----------|-------------|
+| Apr 3, 2025 | Project Initiation | Initial setup of the C++ project with CMake build system |
+| Apr 3, 2025 | Core Classes | Implementation of the Vector3D, Particle, and System classes |
+| Apr 3, 2025 | Basic Simulation Loop | Implementation of the Lennard-Jones potential and force calculations |
+| Apr 3, 2025 | Velocity-Verlet Integrator | Implementation of the time integration algorithm |
+| Apr 3, 2025 | Unit Testing | Setup of Google Test framework and implementation of initial unit tests |
+| Apr 14, 2025 | Energy Minimization | Implementation of steepest descent energy minimization algorithm |
+
+
+## Future extensions:
 
 The modular design makes it easy to extend this simulation. Some ideas for future enhancements include:
 
 1. **Adding thermostats** - Implement Nose-Hoover or Berendsen thermostats for temperature control
-2. **Different integrators** - Add alternatives to Velocity-Verlet, such as leapfrog or predictor-corrector methods
-3. **Force field extensions** - Implement more complex potentials beyond Lennard-Jones
-4. **Parallelization** - Add OpenMP or MPI support for faster simulations of larger systems
+2. **Different integrators** - Add alternatives to Velocity-Verlet algorithm
+3. **Enhanced minimization algorithms** - Add conjugate gradient minimization for better performance
+4. **Force field extensions** - Implement more complex potentials beyond Lennard-Jones. That would be another project, though.
+5. **Parallelization** - Add OpenMP or MPI support for faster simulations of larger systems
 
 ## Conclusion
 
-The Lennard-Jones MD simulation project was an attempt to cement my understanding of MD simulation concepts, and getting used to unit testing in C++. The project successfully implements a basic MD engine with a focus on modularity and extensibility. The simulation runs efficiently, conserves energy, and produces stable results, making it a solid foundation for further exploration in molecular dynamics.
+The Lennard-Jones MD simulation project was an attempt to cement my understanding of MD simulation concepts, and getting used to unit testing in C++. The addition of energy minimization capabilities significantly enhances the robustness of the simulations. The project successfully implements a basic MD engine with a focus on modularity and extensibility. The simulation runs efficiently, conserves energy, and produces stable results, making it a solid foundation for further exploration in molecular dynamics.
