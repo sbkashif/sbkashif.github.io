@@ -9,11 +9,12 @@ ai_assistants:
     url: https://chatgpt.com/share/680195d7-86f0-8006-95a2-5c36358798ca
 ---
 
-Predicting material behavior starts with understanding the fundamental forces between atoms and molecules. For instance, the mechanical strength of polymeric materials arises from the collective response of polymer chains to applied stress. Under moderate deformation, chains stretch and slide past one another via entanglements and nonbonded interactions; under extreme loads, irreversible chain scission breaks backbone covalent bonds, sharply reducing molecular weight and tensile strength. Similarly, the electrical conductivity of metals depends on how electrons traverse the atomic lattice, as determined by the electronic band structure and the energy gap between valence and conduction bands. Capturing these atomic‑scale phenomena that govern macroscopic properties requires mathematical models capable of representing both interatomic and sub‑atomic interactions. At the sub‑atomic level, quantum mechanics governs electron–nuclear forces, whereas at the interatomic level, bonded and nonbonded interactions dominate. The choice of model therefore depends on which physical effects one needs to describe. In this post, we will explore various models for atomic and sub‑atomic interactions, discuss their strengths and limitations, and examine how they interrelate.
+Predicting material behavior starts with understanding the fundamental interactions between atoms and molecules. For instance, the mechanical strength of polymeric materials arises from the collective response of polymer chains to applied stress: from stretching and sliding past one another to scission. Similarly, the electrical conductivity of metals depends on how electrons traverse the atomic lattice.
 
 <!--more-->
 
-From the sub-atomic realm, where quantum mechanics dictates electron-nuclear interactions, to bonded and non-bonded interactions in inter-atomic realm, the choice of model depends on the specific physics we want to capture. In this post, we will explore the different models used to describe atomic and sub-atomic interactions, their strengths and limitations, and how they relate to each other.
+Capturing these atomic‑scale phenomena that govern macroscopic properties requires mathematical models capable of representing both interatomic and sub‑atomic interactions. At the sub‑atomic level, quantum mechanics governs electron–nuclear forces, whereas at the interatomic level, bonded and nonbonded interactions dominate. The choice of model therefore depends on which physical effects one needs to describe. In this post, we will explore various models for atomic and sub‑atomic interactions, discuss their strengths and limitations, and examine how they interrelate.
+
 
 
 ### 1. The Simplest Model: Charged Particles and Coulomb's Law
