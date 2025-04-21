@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 'Understanding atomic and sub-atomic interactions predict material properties: Which Model Captures What?'
+title: 'Understanding atomic and sub-atomic interactions to predict material properties: Which model captures what?'
 permalink: /blog/:year/:month/:day/:title/
 tags: [molecular dynamics, dft, machine learning, quantum mechanics, force fields]
 usemathjax: true
