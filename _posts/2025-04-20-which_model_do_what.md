@@ -122,6 +122,7 @@ To model these phenomena, we need to turn to quantum mechanical approaches, and 
 **Density Functional Theory (DFT)** models electrons using electron density rather than wavefunctions. It solves the Schrödinger equation approximately by minimizing energy as a functional of the electron density $\rho(\mathbf{r})$. DFT captures both particle-like electrostatics and wave-like quantum effects (including Pauli repulsion and dispersion corrections, when included).
 
 However, DFT is fundamentally **static**: it typically assumes that atomic nuclei are fixed in space and calculates the electronic structure for that specific configuration.
+
 ---
 
 
