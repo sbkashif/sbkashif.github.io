@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 'Understanding atomic and sub-atomic interactions influencing material properties'
+title: 'Understanding the building blocks of molecular simulations'
 permalink: /blog/:year/:month/:day/:title/
 tags: [molecular dynamics, dft, machine learning, quantum mechanics, force fields]
 usemathjax: true
@@ -9,12 +9,12 @@ ai_assistants:
     url: https://chatgpt.com/share/680195d7-86f0-8006-95a2-5c36358798ca
 ---
 
-Designing new materials with tailored properties requires a deep understanding of how interactions at atomic and sub-atomic scales influence macroscopic behavior. For example, the mechanical strength of a polymer arises from how its chains respond to stress—through stretching, entanglement, and eventual bond breaking. Similarly, the electrical conductivity of metals depends on how electrons move through a periodic lattice of atoms. Capturing such phenomena in silico involves modeling atomic interactions using mathematical descriptions grounded in physics.
+Designing new materials with tailored properties increasingly relies on molecular simulations—computational tools that model how atoms and molecules interact over time. These simulations provide valuable insights into phenomena like how polymer chains stretch and break under stress, how membranes filter ions, or how molecules self-assemble into functional structures. By capturing atomic-level interactions, molecular simulations offer a unique perspective on material behavior that is often difficult to probe experimentally.
 
 <!--more-->
-The accuracy of molecular simulations depends heavily on how these interactions are represented. Various modeling approaches—from simple classical laws to quantum mechanical and machine-learned potentials—aim to describe different aspects of atomic and electronic behavior. The choice of model depends on the material system, the level of detail required, and the trade-off between computational cost and accuracy.
+The reliability of molecular simulations hinges on how well interatomic interactions are represented. These interactions are described by mathematical models known as force fields, which have proven successful in simulating a wide range of materials and behaviors. Classical force fields, often parameterized with experimental or quantum mechanical data, can accurately predict many important material properties. For more complex or quantum-sensitive phenomena, molecular simulations can be enhanced by quantum mechanical methods or machine-learned models.
 
-In this post, we will begin with a simplified view of atomic interactions and gradually build up to the classical models that underpin molecular dynamics simulations. From there, we will discuss the quantum-scale interactions that classical models inherently miss and how hybrid approaches like ab initio molecular dynamics (AIMD) and machine-learned interatomic potentials (MLIPs) can incorporate these interactions, capturing the best of both worlds. 
+In this post, we will build up from a simple model of an atom to the typical funcitonal form of a classical forcefield used in molecular simulations, and then explore how quantum and machine-learned approaches extend their reach—offering improved accuracy where traditional force fields fall short.
 
 ### A simplistic starting point to model atomic interactions
 We know that an atom consists of a nucleui and electrons. Imagine electrons and nuclei as simple charged particles. In this classical view, their interactions can be described using **Coulomb’s law**, which quantifies the force between two point charges:
@@ -141,7 +141,7 @@ However, AIMD is computationally expensive and scales poorly with system size. I
 
 ###  Machine-Learned Potentials: A New Frontier
 
-**MLIPs** (Machine-Learned Interatomic Potentials) have recently emerged as a promising avenue to overcome speed limilatins while mainting quantum accuracy. Assuming neural networks to be a universal approximator, MLIPs can be trained on quantum mechanical data (e.g., DFT or AIMD) to learn the underlying energetics of a system without needing to come up with a functional form for a forcefield. 
+**MLIPs** (Machine-Learned Interatomic Potentials) have recently emerged as a promising avenue to reduce the speed-accuracy tradeoff of molecular simulations. Assuming a neural network to be a universal approximator, MLIPs can be trained on quantum mechanical data (e.g., DFT or AIMD) to learn the underlying energetics of a system without needing to come up with a functional form for a forcefield. 
 
 MLIPs can be orders of magnitude faster than AIMD while maintaining comparable accuracy. They can also be trained on large datasets, allowing them to generalize to new configurations and systems. This makes them a powerful tool for simulating complex materials and chemical processes.
 
@@ -149,7 +149,7 @@ It would be interesting to see what new questions MLIPs can help unlock that hav
 
 Finally, MLIPs are still orders of magnitude slower than classical force fields, making them impractical for very large systems or long timescales. They are best suited for applications where accuracy is paramount and computational resources are available.
 
-### mary
+### Summary
 
 | Model               | Captures                                  | Misses                                           |
 |---------------------|------------------------------------------|--------------------------------------------------|
