@@ -9,15 +9,15 @@ ai_assistants:
     url: https://chatgpt.com/share/680195d7-86f0-8006-95a2-5c36358798ca
 ---
 
-Designing new materials with tailored properties increasingly relies on molecular simulations—computational tools that model how atoms and molecules interact over time. These simulations provide valuable insights into phenomena like how polymer chains stretch and break under stress, how membranes filter ions, or how molecules self-assemble into functional structures. By capturing atomic-level interactions, molecular simulations offer a unique perspective on material behavior that is often difficult to probe experimentally.
+Molecular simulations have emerged as a powerful tool for designing materials with tailored properties. By modeling the motion of atoms and molecules, they provide valuable insights into phenomena such as how polymer chains stretch and break under stress, how membranes filter ions, or how molecules self-assemble into functional structures. By capturing atomic-level interactions, molecular simulations offer a perspective on material behavior that is often difficult to access experimentally.
 
 <!--more-->
-The reliability of molecular simulations hinges on how well interatomic interactions are represented. These interactions are described by mathematical models known as force fields, which have proven successful in simulating a wide range of materials and behaviors. Classical force fields, often parameterized with experimental or quantum mechanical data, can accurately predict many important material properties. For more complex or quantum-sensitive phenomena, molecular simulations can be enhanced by quantum mechanical methods or machine-learned models.
+The reliability of molecular simulations hinges on how accurately interatomic interactions are represented. These interactions are captured through mathematical models known as force fields, which have been remarkably successful in simulating a wide range of materials and behaviors. Classical force fields—often parameterized using experimental data or quantum mechanical calculations—can reliably predict many important material properties. For systems involving more complex chemistry or subtle quantum effects, molecular simulations can be extended with quantum mechanical methods or machine-learned models for greater accuracy.
 
 In this post, we will build up from a simple model of an atom to the typical funcitonal form of a classical forcefield used in molecular simulations, and then explore how quantum and machine-learned approaches extend their reach—offering improved accuracy where traditional force fields fall short.
 
 ### A simplistic starting point to model atomic interactions
-We know that an atom consists of a nucleui and electrons. Imagine electrons and nuclei as simple charged particles. In this classical view, their interactions can be described using **Coulomb’s law**, which quantifies the force between two point charges:
+We know that an atom consists of a nucleus and electrons. In a classical picture, both can be treated as simple charged particles, and their interactions described by **Coulomb’s law**, which quantifies the force between two point charges.
 
 
 $$V_{\text{Coulomb}}(r) = \frac{1}{4\pi \varepsilon_0} \frac{q_1 q_2}{r}$$
@@ -45,7 +45,7 @@ As the electron emits radiation, it loses energy. With less energy, the electron
  
 ---
 
-Clearly, this collapse doesn’t happen. Atoms exist. Matter is stable. What is the missing piece then that can help develop an accuarate model? 
+Clearly, this collapse doesn’t happen. Atoms exist. Matter is stable. So what are we missing from this picture?
 
 ### Enter Quantum Mechanics: Wavefunctions and Electron Clouds
 
@@ -105,7 +105,7 @@ These bonded terms are not derived from fundamental laws but are empirical appro
 
 These models are often parameterized using experimental data or high-level quantum mechanical calculations -- effectivly called **force fields**. Many common forcefields such as AMBER, CHARMM, and OPLS have proven effective for simulating useful phenomena in biological and materials systems like protein folding, polymer dynamics, and crystal growth.
 
-### What's Still Missing in Classical Models?
+### What's still missing in the classical force fields?
 
 These force fields are not universal. They are typically optimized for specific classes of molecules and may not perform well outside their intended domain. For example, a force field parameterized for proteins may not accurately capture the behavior of small organic molecules or inorganic materials. 
 
@@ -114,35 +114,41 @@ Furthemore, the force fields inherently miss several important quantum mechanica
 - **Chemical reactivity** — breaking and forming of bonds
 - **Electronic delocalization** and **many-body effects**
 
-To model these phenomena, we need to turn to quantum mechanical approaches, and eventually the hybrid approaches.
+To model these phenomena, we need to turn to quantum mechanical models.
 
 ---
-**Detour: Quntum mechanical desccriptions captured by models like Density Functional Theory (DFT)**
+**Detour: Quantum mechanical models**
 
-**Density Functional Theory (DFT)** models electrons using electron density rather than wavefunctions. It solves the Schrödinger equation approximately by minimizing energy as a functional of the electron density $\rho(\mathbf{r})$. DFT captures both particle-like electrostatics and wave-like quantum effects (including Pauli repulsion and dispersion corrections, when included).
+As dicussed earlier, quantum mechanics describes the behavior of electrons in atoms and molecules using wavefunctions. The Schrödinger equation governs the time evolution of these wavefunctions, allowing us to calculate the energy levels and properties of a system.
+$$\hat{H}\psi(\mathbf{r}) = E\psi(\mathbf{r})$$
 
-However, DFT is fundamentally **static**: it typically assumes that atomic nuclei are fixed in space and calculates the electronic structure for that specific configuration.
+where $\hat{H}$ is the Hamiltonian operator, $\psi(\mathbf{r})$ is the wavefunction, and $E$ is the energy eigenvalue.
+
+The Hamiltonian operator includes terms for the kinetic energy of the electrons and nuclei, as well as the potential energy due to electron-electron, electron-nucleus, and nucleus-nucleus interactions. The challenge lies in solving this equation for many-body systems, which is computationally expensive and often intractable.
+
+**Density Functional Theory (DFT)** is a widely used quantum mechanical method that approximates the many-body problem by focusing on the electron density rather than the wavefunction. It allows for the calculation of electronic structure and properties of materials with reasonable accuracy and computational efficiency. It solves the Schrödinger equation approximately by minimizing energy as a functional of the electron density $\rho(\mathbf{r})$. DFT captures both particle-like electrostatics and wave-like quantum effects (including Pauli repulsion and dispersion corrections, when included).
+
+However, DFT is fundamentally **static**: it typically assumes that atomic nuclei are fixed in space and calculates the electronic structure for that specific configuration. Hence, DFT models would not be about to simulation atomic motion.
 
 ---
 
 
 ### Ab Initio Molecular Dynamics (AIMD): The Quantum-Classical Hybrid
 
-Determining material properties, such as melting points, elasticity, and protein folding require simulating atomic motion over time. How can we do this while still capturing the quantum effects that classical models miss? We can use **Ab Initio Molecular Dynamics (AIMD)**, which, while simulaing the motion of atoms, uses quantum mechanical calculations to determine the forces acting on them.
+For studying processes like melting, elasticity, or chemical reactions—we need to incorporate both quantum accuracy and atomic motion. To do this, we can use **Ab Initio Molecular Dynamics (AIMD)**. In AIMD, atomic trajectories evolve according to Newton’s laws, but the forces are computed on-the-fly using quantum mechanical calculations (typically DFT).
 
 Effectively, this allows to capture:
 - Accurate electron-nuclear forces
 - Bond making and breaking
 - Real-time evolution of atomic motion at finite temperature
 
-In other words, AIMD enables generating molecular dyanmics trajectories with the accuracy of the chosen quantum mechanical method (e.g., DFT). This is particularly useful for studying chemical reactions where polarization effects and charge transfer are important.
+In other words, AIMD enables generating molecular dyanmics trajectories with the accuracy of the chosen quantum mechanical method. This is particularly useful for studying chemical reactions where polarization effects and charge transfer are important.
 
-
-However, AIMD is computationally expensive and scales poorly with system size. It is limited to small systems (hundreds of atoms) and short timescales (picoseconds).
+The trade-off? AIMD is computationally intensive, restricting its use to small systems (hundreds of atoms) and short timescales (typically picoseconds). 
 
 ###  Machine-Learned Potentials: A New Frontier
 
-**MLIPs** (Machine-Learned Interatomic Potentials) have recently emerged as a promising avenue to reduce the speed-accuracy tradeoff of molecular simulations. Assuming a neural network to be a universal approximator, MLIPs can be trained on quantum mechanical data (e.g., DFT or AIMD) to learn the underlying energetics of a system without needing to come up with a functional form for a forcefield. 
+**MLIPs** (Machine-Learned Interatomic Potentials) have recently emerged as a promising avenue to reduce the speed-accuracy tradeoff of molecular simulations. Assuming a neural network to be a universal approximator, MLIPs can be trained on quantum mechanical data (e.g., DFT or AIMD) to learn the underlying energetics of a system without needing to come up with a well-defined functional form like the ones used in classical force fields.
 
 MLIPs can be orders of magnitude faster than AIMD while maintaining comparable accuracy. They can also be trained on large datasets, allowing them to generalize to new configurations and systems. This makes them a powerful tool for simulating complex materials and chemical processes.
 
