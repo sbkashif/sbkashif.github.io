@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 'Understanding the building blocks of molecular simulations'
+title: 'Mapping Equations to Phenomena: Force Fields in Molecular Simulations'
 permalink: /blog/:year/:month/:day/:title/
 tags: [molecular dynamics, dft, machine learning, quantum mechanics, force fields]
 usemathjax: true
