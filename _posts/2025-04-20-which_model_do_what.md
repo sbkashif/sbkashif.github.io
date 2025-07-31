@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 'Mapping Equations to Phenomena: Force Fields in Molecular Simulations'
+title: 'Mapping equations to phenomena: Force Fields in molecular simulations'
 permalink: /blog/:year/:month/:day/:title/
 tags: [molecular dynamics, dft, machine learning, quantum mechanics, force fields]
 usemathjax: true
@@ -114,12 +114,21 @@ Furthemore, the force fields inherently miss several important quantum mechanica
 - **Chemical reactivity** — breaking and forming of bonds
 - **Electronic delocalization** and **many-body effects**
 
-To model these phenomena, we need to turn to quantum mechanical models.
+To model these phenomena, we need to turn to quantum mechanical models to calculate the interatomic interactions while still capturing the atomic motion.
+
+### Ab Initio Molecular Dynamics (AIMD): The Quantum-Classical Hybrid
+
+**Ab Initio Molecular Dynamics (AIMD)** provides the bridge between the accuracy of quantum mechanics and the efficiency of classical molecular dynamics. In AIMD, atomic trajectories evolve according to Newton’s laws, but the forces are computed on-the-fly using quantum mechanical calculations (typically DFT).
+
+Effectively, this allows to capture:
+- Accurate electron-nuclear forces
+- Bond making and breaking
+- Real-time evolution of atomic motion at finite temperature
 
 ---
-**Detour: Quantum mechanical models**
+**Detour: Implementation of quantum mechanical calculations**
 
-As dicussed earlier, quantum mechanics describes the behavior of electrons in atoms and molecules using wavefunctions. The Schrödinger equation governs the time evolution of these wavefunctions, allowing us to calculate the energy levels and properties of a system.
+Quantum mechanics describes the behavior of electrons in atoms and molecules using wavefunctions. The Schrödinger equation governs the time evolution of these wavefunctions, allowing us to calculate the energy levels and properties of a system.
 $$\hat{H}\psi(\mathbf{r}) = E\psi(\mathbf{r})$$
 
 where $\hat{H}$ is the Hamiltonian operator, $\psi(\mathbf{r})$ is the wavefunction, and $E$ is the energy eigenvalue.
@@ -128,23 +137,11 @@ The Hamiltonian operator includes terms for the kinetic energy of the electrons 
 
 **Density Functional Theory (DFT)** is a widely used quantum mechanical method that approximates the many-body problem by focusing on the electron density rather than the wavefunction. It allows for the calculation of electronic structure and properties of materials with reasonable accuracy and computational efficiency. It solves the Schrödinger equation approximately by minimizing energy as a functional of the electron density $\rho(\mathbf{r})$. DFT captures both particle-like electrostatics and wave-like quantum effects (including Pauli repulsion and dispersion corrections, when included).
 
-However, DFT is fundamentally **static**: it typically assumes that atomic nuclei are fixed in space and calculates the electronic structure for that specific configuration. Hence, DFT models would not be about to simulation atomic motion.
+However, DFT is fundamentally **static**: it typically assumes that atomic nuclei are fixed in space and calculates the electronic structure for that specific configuration. Hence, DFT models would not be about to simulation atomic motion. Hence, AIMD combines DFT with classical molecular dynamics to allow for the simulation of atomic motion while still capturing the quantum mechanical effects.
 
 ---
 
-
-### Ab Initio Molecular Dynamics (AIMD): The Quantum-Classical Hybrid
-
-For studying processes like melting, elasticity, or chemical reactions—we need to incorporate both quantum accuracy and atomic motion. To do this, we can use **Ab Initio Molecular Dynamics (AIMD)**. In AIMD, atomic trajectories evolve according to Newton’s laws, but the forces are computed on-the-fly using quantum mechanical calculations (typically DFT).
-
-Effectively, this allows to capture:
-- Accurate electron-nuclear forces
-- Bond making and breaking
-- Real-time evolution of atomic motion at finite temperature
-
-In other words, AIMD enables generating molecular dyanmics trajectories with the accuracy of the chosen quantum mechanical method. This is particularly useful for studying chemical reactions where polarization effects and charge transfer are important.
-
-The trade-off? AIMD is computationally intensive, restricting its use to small systems (hundreds of atoms) and short timescales (typically picoseconds). 
+Despite the improved accuracy with AIMD, it is still computationally intensive when compared to classical molecular dynamics, restricting its use to small systems (hundreds of atoms) and short timescales (typically picoseconds).
 
 ###  Machine-Learned Potentials: A New Frontier
 
