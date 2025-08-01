@@ -1,7 +1,7 @@
 ---
 layout: page
-title: Portfolio
+title: DIY core concepts
 permalink: /portfolio/
 ---
-A collection of my projects showcasing my work in computational chemistry, molecular dynamics, and machine learning for materials science.
+Learning core concepts in molecular dynamics and machine learning by coding from scratch.
 {% include portfolio_grid.html show_excerpt=true limit=100 %}
