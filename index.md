@@ -36,7 +36,7 @@ Learning core concepts in molecular simulations and machine learning by coding f
 
 {% include portfolio_grid.html limit=3 show_excerpt=false %}
 
-[View All DIYs](/portfolio){: .view-all-bustton}
+[View All DIYs](/portfolio){: .view-all-button}
 
 ---
 
