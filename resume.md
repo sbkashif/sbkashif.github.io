@@ -9,15 +9,15 @@ permalink: /resume/
 Education
 ---------
 
-2017-2022 (expected)
+2017-2024
 :   **Ph.D., Chemical Engineering**; Clemson University, Clemson, SC, USA 
 
-    *Dissertation title:* Understanding solute transport in polyamide membranes using molecular simulations
+    *Dissertation title:* Fouling and selectivity mechanisms of polyamide membranes: Insights from molecular simulations
 
 2015-2017
 :   **M.Sc., Chemical Engineering**; Universiti Teknologi PETRONAS, Perak, Malaysia
 
-    *Thesis title:* CFD simulation N2/H2 flow profile in a monolihtic channel encountered by obstruction assembly
+    *Thesis title:* CFD simulation N2/H2 flow profile in a monolithic channel encountered by obstruction assembly
 
 2010-2014
 :   **B.Tech., Chemical Engineering**; Aligarh Muslim University, Aligarh, UP, India
