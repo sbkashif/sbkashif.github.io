@@ -3,7 +3,7 @@ author:
   name: Salman Bin Kashif
   email: salmanbi@buffalo.edu
 description: > # this means to ignore newlines until "show_excerpts:"
-    This is Salman's personal webpage. The page features the details of his work, and the blogs he posts occasionally. 
+    This is Salman's personal webpage featuring his research, portfolio, and blog posts.
 show_powered_by: true # set to true to show "Powered by Jekyll" in the footer
 show_excerpts: true # set to true to show excerpts on the homepage
 

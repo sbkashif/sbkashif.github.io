@@ -3,6 +3,7 @@ layout: home
 ---
 
 ![profile](/assets/profile.png#profile)
+{% include social_icons_inline.html %}
 
 
 ## Hello! I'm Salman, currently a Postdoctoral Researcher at SUNY Buffalo.
@@ -18,13 +19,12 @@ My postdoctoral work with [Prof. Kaihang Shi](https://shiresearchgroup.github.io
 - High-throughput simulations for dataset generation
 - Machine learning interatomic potentials (so far, have only done tutorials without a formal research project)
 
-{% include social_icons_inline.html %}
 
 
 ---
 
 # Research
-Brief overview of research projects conducted during my PhD and postdoctoral work.
+Brief overview of research projects conducted for my PhD dissertation and postdoctoral work.
 {% include research_grid.html limit=4 show_excerpt=false %}
 
 [View All Research Projects](/research){: .view-all-button}
@@ -32,16 +32,17 @@ Brief overview of research projects conducted during my PhD and postdoctoral wor
 ---
 
 ## DIY core concepts
-Learning core concepts in molecular dynamics and machine learning by coding from scratch.
+Learning core concepts in molecular simulations and machine learning by coding from scratch.
 
 {% include portfolio_grid.html limit=3 show_excerpt=false %}
 
-[View All DIYs](/portfolio){: .view-all-button}
+[View All DIYs](/portfolio){: .view-all-bustton}
 
 ---
 
 # Recent Blog Posts
 
+I occasionally write about my research, grad school experience, coding, and other topics of interest.
 {% include blog_list.html limit=3 show_excerpt=false %}
 
 [View All Posts](/posts){: .view-all-button}
