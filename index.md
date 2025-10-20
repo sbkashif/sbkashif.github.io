@@ -31,7 +31,7 @@ Brief overview of research projects conducted for my PhD dissertation and postdo
 
 ---
 
-## DIY core concepts
+## DIY
 Learning core concepts in molecular simulations and machine learning by coding from scratch.
 
 {% include portfolio_grid.html limit=3 show_excerpt=false %}

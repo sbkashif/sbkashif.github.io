@@ -1,6 +1,6 @@
 ---
 layout: page
-title: DIY core concepts
+title: DIY
 permalink: /portfolio/
 ---
 This page is dedicated to sharing my journey of learning core concepts in molecular simulations and machine learning by coding from scratch.
