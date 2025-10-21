@@ -17,6 +17,8 @@ page_modified: 2025-10-20
 
 Developed a tracking tool to manage and monitor high-throughput Monte Carlo simulations using the gRASPA software package. The tool was required to be developed to efficiently generate the dataset needed for training an interpretable machine learning model (more details in [Relevant links](#relevant-links)). Since then, the tool has been used in a few other projects ranging from simply parsing the adsorbate number to complete adsorption isotherm plots. More details on the tool and its functionalities are available in the [GitHub repository](https://github.com/sbkashif/gRASPA_job_tracker).
 
+<!--more-->
+
  A typical workflow involves setting up multiple simulation jobs with varying parameters across different compute nodes. The tracker keeps track of job statuses, retries failed simulations, and compiles results into a structured format for downstream analysis. The key idea is to control all the simulation and software settings from a single `config file` and ensure reproducibility.
 
 Here is an example `config file` used to generate adsorption isotherms:
