@@ -13,9 +13,12 @@ ai_assistants:
     url: https://github.com/features/copilot
   - tool: claude
     url: https://claude.ai
+codes:
+  - url: "https://github.com/sbkashif/lennard-jones-cpp"
+    title: "lennard-jones-cpp"
+    thumbnail: assets/images/github-logo.svg
+page_modified: 2025-06-20
 ---
-
-[![GitHub Repository](https://img.shields.io/badge/GitHub-Repository-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/sbkashif/lennard-jones-cpp) 
 
 This project implements a molecular dynamics simulation framework using the Lennard-Jones potential to model particle interactions. Molecular Dynamics (MD) simulations are a powerful computational technique used in physics, chemistry, and materials science to study the physical movements of atoms and molecules.
 

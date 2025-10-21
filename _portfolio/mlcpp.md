@@ -13,9 +13,12 @@ ai_assistants:
     url: https://github.com/features/copilot
   - tool : claude
     url: https://claude.ai
+codes:
+  - url: "https://github.com/sbkashif/mlcpp"
+    title: "mlcpp"
+    thumbnail: assets/images/github-logo.svg
+page_modified: 2024-06-15
 ---
-
-[![GitHub Repository](https://img.shields.io/badge/GitHub-Repository-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/sbkashif/mlcpp)
 
 ML-CPP is a high-performance machine learning library that combines the computational efficiency of C++ with the user-friendly interface of Python. The project demonstrates how to bridge these two worlds effectively, creating a machine learning framework that's both powerful and easy to use.
 
@@ -96,7 +99,3 @@ The project demonstrated both the advantages and challenges of implementing mach
 - C++ provides fine-grained control over memory and computation
 - The implementation gap between scikit-learn and our library highlights the extensive optimization in mature ML libraries
 - Future work could include SIMD optimizations, GPU acceleration, and additional algorithms
-
-## GitHub Repository
-
-[View the complete project on GitHub](https://github.com/sbkashif/mlcpp)
