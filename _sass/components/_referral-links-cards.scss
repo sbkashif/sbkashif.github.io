@@ -1,0 +1,112 @@
+/* Referral links / project card thumbnail styles (clean and minimal) */
+
+/* Thumbnail container: fixed height so cards remain uniform */
+.referral-grid .project-card .card-illustration {
+	background: #f6f8fa;
+	width: 100%;
+	height: 120px;
+	overflow: hidden;
+	position: relative;
+	border-radius: 6px 6px 0 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.referral-grid .project-card .card-illustration--light {
+	background: #fff;
+}
+
+/* Absolute-centered image that always covers the thumbnail without changing layout */
+.referral-grid .project-card .card-illustration > img,
+.referral-grid .project-card img.card-icon {
+	/* center and fit without cropping */
+	position: static;
+	transform: none;
+	max-width: 100%;
+	max-height: 100%;
+	width: auto;
+	height: auto;
+	display: block;
+	margin: 0 auto;
+	object-fit: contain;
+}
+
+/* SVG thumbnails: avoid cropping — scale to the thumbnail height and center horizontally */
+.referral-grid .project-card .card-illustration > img.card-icon[src$=".svg"],
+.referral-grid .project-card .card-illustration > img.card-icon[src*=".svg?"] {
+	position: relative !important;
+	left: auto !important;
+	top: auto !important;
+	transform: none !important;
+	height: 100% !important; /* fill thumbnail height */
+	width: auto !important;  /* preserve aspect ratio */
+	max-width: 100% !important;
+	max-height: 100% !important;
+	margin: 0 auto !important; /* center horizontally */
+	display: block !important;
+	object-fit: contain !important;
+}
+
+/* Inline SVG/logo sizing fallback */
+.referral-grid .project-card .card-illustration .card-svg-icon {
+	width: 72px;
+	height: 72px;
+	fill: currentColor;
+	position: relative;
+}
+
+/* Card body layout (compact) */
+.referral-grid .project-card .card-body {
+	padding: 8px 10px 12px;
+}
+
+.referral-grid .project-card .card-type {
+	font-size: 0.65rem;
+	font-weight: 700;
+	text-transform: uppercase;
+	color: #6b7280;
+	margin-bottom: 4px;
+}
+
+.referral-grid .project-card .card-title {
+	font-size: 0.95rem;
+	margin: 0 0 6px 0;
+	color: #111827;
+	font-weight: 700;
+}
+
+.referral-grid .project-card .card-desc {
+	margin: 0;
+	color: #374151;
+	font-size: 0.85rem;
+}
+
+/* Compact referral list (used on research pages) */
+.referral-list {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	margin: 0;
+	padding: 0;
+}
+
+.referral-item {
+	display: inline-flex;
+	align-items: center;
+	gap: 10px;
+	text-decoration: none;
+	color: inherit;
+	padding: 6px 0;
+}
+
+.referral-title {
+	font-size: 0.95rem;
+}
+
+/* Background-image helper (if include switches to background-image) */
+.referral-grid .project-card .card-illustration {
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: cover;
+}

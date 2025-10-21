@@ -1,0 +1,17 @@
+// Small mixins used across component partials
+
+@mixin respond-to($bp) {
+  @if $bp == small {
+    @media (max-width: $bp-small) { @content; }
+  } @else if $bp == medium {
+    @media (max-width: $bp-medium) { @content; }
+  } @else if $bp == large {
+    @media (max-width: $bp-large) { @content; }
+  }
+}
+
+@mixin visually-hidden {
+  position: absolute !important;
+  height: 1px; width: 1px; overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px); white-space: nowrap;
+}

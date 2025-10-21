@@ -1,0 +1,23 @@
+// Project-wide SASS variables
+// Place color tokens, spacing scale, typography tokens, and other globals here.
+
+$site-bg: #ffffff;
+$muted: #666666;
+$border: #eee;
+$accent: #b94700;
+$card-bg: #f6f8fa;
+
+$radius-sm: 4px;
+$radius-md: 8px;
+
+$gap-xs: 6px;
+$gap-sm: 12px;
+$gap-md: 20px;
+
+$transition-fast: 0.15s;
+$transition-std: 0.3s;
+
+// Breakpoints
+$bp-small: 480px;
+$bp-medium: 768px;
+$bp-large: 1024px;

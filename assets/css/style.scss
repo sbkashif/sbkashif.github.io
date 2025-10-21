@@ -2,6 +2,13 @@
 ---
 @import "minima/skins/classic";
 @import "minima/initialize";
+
+// Project tokens and helpers (Sass load path includes `_sass/`)
+@import "variables";
+@import "mixins";
+
+// Component partials
+@import "components/_referral-links-cards";
 // Profile image styling
 img[src*="#profile"] {
   display: block;
@@ -35,6 +42,9 @@ img[src*="#profile"] {
   height: 180px;
   object-fit: cover;
 }
+
+/* Card illustration for small icons used in project/research cards */
+
 
 .project-card h3 {
   padding: 15px 15px 0;
@@ -125,4 +135,15 @@ img[src*="#profile"] {
   object-fit: cover;
   margin-bottom: 20px;
   border-radius: 4px;
+}
+
+/* Make all rendered dates/time elements grayscale */
+time,
+.meta time,
+.project-meta time,
+.post-meta time,
+.dt-published,
+.dt-modified {
+  color: #6b7280; /* gray-500 */
+  filter: grayscale(100%);
 }
