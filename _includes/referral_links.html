@@ -1,0 +1,95 @@
+<!-- filepath: /_includes/referral_links.html -->
+{%- comment -%}
+  referral_links.html
+
+  Minimal include that renders a single "Links" grid using `codes` and
+  `preprints` frontmatter arrays. Each item may provide `thumbnail`/`image`/
+  `img`. Absolute URLs are used as-is; relative paths are prefixed with '/'.
+{%- endcomment -%}
+
+{%- assign code_items = include.codes | default: page.codes -%}
+{%- assign preprint_items = include.preprints | default: page.preprints -%}
+{%- assign page_thumb = include.thumbnail | default: "" -%}
+
+{% if code_items or preprint_items %}
+
+<h2>Relevant links</h2>
+<div class="project-grid referral-grid">
+
+  {%- if code_items -%}
+    {%- for item in code_items -%}
+      {%- assign item_url = item.url | default: item.link | default: item.href -%}
+      {%- assign item_title = item.title | default: item.name | default: item.label | default: item_url -%}
+      {%- assign item_desc = item.description | default: item.desc | default: "" -%}
+  {%- assign raw_thumb = item.thumbnail | default: item.image | default: item.img | default: "" -%}
+
+      <div class="project-card">
+        <a href="{{ item_url }}" target="_blank" rel="noopener">
+          <div class="card-illustration">
+            {%- if raw_thumb != "" -%}
+              {%- if raw_thumb contains '://' -%}
+                <img class="card-icon" src="{{ raw_thumb }}" alt="{{ item_title }}" />
+              {%- else -%}
+                <img class="card-icon" src="/{{ raw_thumb }}" alt="{{ item_title }}" />
+              {%- endif -%}
+            {%- else -%}
+              <!-- Document placeholder SVG -->
+              <svg class="card-svg-icon placeholder-icon" width="88" height="88" viewBox="0 0 24 24" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+                <path d="M6 2h7l5 5v13a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2z" fill="#f3f4f6"/>
+                <path d="M13 2v5h5" fill="#e5e7eb"/>
+                <path d="M8 9h8v2H8zM8 13h8v2H8zM8 17h5v2H8z" fill="#9ca3af"/>
+              </svg>
+            {%- endif -%}
+          </div>
+          <div class="card-body">
+            <div class="card-type">Code</div>
+            <h3 class="card-title">{{ item_title }}</h3>
+            {%- if item_desc != "" -%}
+              <p class="card-desc">{{ item_desc }}</p>
+            {%- endif -%}
+          </div>
+        </a>
+      </div>
+    {%- endfor -%}
+  {%- endif -%}
+
+  {%- if preprint_items -%}
+    {%- for item in preprint_items -%}
+      {%- assign item_url = item.url | default: item.link | default: item.href -%}
+      {%- assign item_title = item.title | default: item.name | default: item.label | default: item_url -%}
+      {%- assign item_desc = item.description | default: item.desc | default: "" -%}
+  {%- assign raw_thumb = item.thumbnail | default: item.image | default: item.img | default: page_thumb -%}
+
+      <div class="project-card">
+        <a href="{{ item_url }}" target="_blank" rel="noopener">
+          <div class="card-illustration card-illustration--light">
+            {%- if raw_thumb != "" -%}
+              {%- if raw_thumb contains '://' -%}
+                <img class="card-icon" src="{{ raw_thumb }}" alt="{{ item_title }}" />
+              {%- else -%}
+                <img class="card-icon" src="/{{ raw_thumb }}" alt="{{ item_title }}" />
+              {%- endif -%}
+            {%- else -%}
+              <!-- Document placeholder SVG (light) -->
+              <svg class="card-svg-icon placeholder-icon" width="88" height="88" viewBox="0 0 24 24" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+                <path d="M6 2h7l5 5v13a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2z" fill="#ffffff"/>
+                <path d="M13 2v5h5" fill="#f3f4f6"/>
+                <path d="M8 9h8v2H8zM8 13h8v2H8zM8 17h5v2H8z" fill="#9ca3af"/>
+              </svg>
+            {%- endif -%}
+          </div>
+          <div class="card-body">
+            <div class="card-type">Preprint</div>
+            <h3 class="card-title">{{ item_title }}</h3>
+            {%- if item_desc != "" -%}
+              <p class="card-desc">{{ item_desc }}</p>
+            {%- endif -%}
+          </div>
+        </a>
+      </div>
+    {%- endfor -%}
+  {%- endif -%}
+
+</div>
+
+{% endif %}
