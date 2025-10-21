@@ -19,8 +19,10 @@ layout: default
       {% endif %}
     </div>
     {% endif %}
+    {%- assign mdate = page.modified_date | default: page.page_modified -%}
+    {%- if mdate -%}
     <p class="meta">
-      <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: site.minima.date_format }}</time>
+      Last modified: <time datetime="{{ mdate | date_to_xmlschema }}">{{ mdate | date: site.minima.date_format }}</time>
       {% if page.categories.size > 0 %}
         <span class="categories">
           {% for category in page.categories %}
@@ -29,6 +31,18 @@ layout: default
         </span>
       {% endif %}
     </p>
+    {%- elsif page.date -%}
+    <p class="meta">
+      Published: <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: site.minima.date_format }}</time>
+      {% if page.categories.size > 0 %}
+        <span class="categories">
+          {% for category in page.categories %}
+            <span class="category">{{ category }}</span>
+          {% endfor %}
+        </span>
+      {% endif %}
+    </p>
+    {%- endif -%}
   </header>
 
   {% if page.featured_image %}
