@@ -32,7 +32,9 @@ Brief overview of research projects conducted for my PhD dissertation and during
 ---
 
 ## DIY
-My journey with learning core concepts in molecular simulations and machine learning by coding from scratch.
+Understand the underlying principles and algorithms behind widely used software packages and libraries by coding key building blocks from scratch.
+
+
 
 {% include portfolio_grid.html limit=3 show_excerpt=false %}
 
