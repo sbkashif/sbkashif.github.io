@@ -10,7 +10,7 @@ I am a chemical engineer specializing in computational approaches to study nanop
 
 For my Ph.D. dissertation, I studied fouling mechanism and selectivity of polyamide membranes using molecular simulations and enhanced sampling techniques. Insights from molecular simulations were then utilized to develop machine learning frameworks for rapid exploration of design space. I also developed a generalized python tool to generate initial configurations for molecular simulations of polymer systems in an automated and streamlined manner.
 
-I am now seeking opportunities where I can apply my skills in computational modeling and software tool development to address challenges in polymeric and biomolecular research.
+I am now seeking opportunities where I can apply my skills in computational modeling and software tool development to address challenges in computational modeling of nanoporous membranes and materials discovery.
 
 Outside work, I like listening to music, watching soccer and cricket, reading, and taking long walks in the neighborhood.
 
