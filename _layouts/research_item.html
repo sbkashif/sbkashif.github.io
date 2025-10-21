@@ -5,11 +5,16 @@ layout: default
 <article class="research-item">
   <header>
     <h1>{{ page.title }}</h1>
-    {% if page.date %}
+    {%- assign mdate = page.modified_date | default: page.page_modified -%}
+    {%- if mdate -%}
+    <p class="meta">
+      Last modified: <time datetime="{{ mdate | date_to_xmlschema }}">{{ mdate | date: site.minima.date_format }}</time>
+    </p>
+    {%- elsif page.date -%}
     <p class="meta">
       <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: site.minima.date_format }}</time>
     </p>
-    {% endif %}
+    {%- endif -%}
   </header>
 
   {% if page.banner_image %}
