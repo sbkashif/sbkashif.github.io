@@ -31,6 +31,16 @@ Brief overview of research projects conducted for my PhD dissertation and during
 
 ---
 
+
+# Recent Blog Posts
+
+I occasionally write about my research, grad school experience, coding, and other topics of interest.
+{% include blog_list.html limit=3 show_excerpt=false %}
+
+[View All Posts](/posts){: .view-all-button}
+
+---
+
 ## DIY
 Understand the underlying principles and algorithms behind widely used software packages and libraries by coding key building blocks from scratch.
 
@@ -41,11 +51,3 @@ Understand the underlying principles and algorithms behind widely used software 
 [View All DIYs](/portfolio){: .view-all-button}
 
 ---
-
-# Recent Blog Posts
-
-I occasionally write about my research, grad school experience, coding, and other topics of interest.
-{% include blog_list.html limit=3 show_excerpt=false %}
-
-[View All Posts](/posts){: .view-all-button}
-

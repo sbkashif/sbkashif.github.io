@@ -22,8 +22,8 @@ minima:
 header_pages:
  - about.md
  - research.md
- - portfolio.md
  - posts.md
+ - portfolio.md
  
 # Collections
 collections:
@@ -37,11 +37,6 @@ collections:
 defaults:
   - scope:
       path: ""
-      type: "portfolio"
-    values:
-      layout: "portfolio_item"
-  - scope:
-      path: ""
       type: "research"
     values:
       layout: "research_item"
@@ -50,6 +45,11 @@ defaults:
       type: "posts"
     values:
       layout: "post"
+  - scope:
+      path: ""
+      type: "portfolio"
+    values:
+      layout: "portfolio_item"
 
 # Project display settings
 project_thumbnail_height: 120px
