@@ -11,13 +11,13 @@ layout: home
 My postdoctoral work with [Prof. Kaihang Shi](https://shiresearchgroup.github.io) focuses on understanding selectivity mechanisms in zeolitic membranes for applications in energy storage and chemical seperations. Prior to this, I completed my PhD from Clemson University in [Prof. Sapna Sarupria's](https://sarupriagroup.github.io) group where I investigated fouling mechanisms in polyamide water purification membranes.
 
 ### Expertise:
-- Molecular dynamics simulations
-- Monte Carlo simulations
-- Machine learning-enabled enhanced sampling for molecular simulations
-- Data-driven discovery of materials with target properties
+- Molecular Dynamics (MD) simulations
+- Monte Carlo (MC) simulations
 - Software development for computational chemistry applications
 - High-throughput simulations for dataset generation
-- Machine learning interatomic potentials (so far, have only done tutorials without a formal research project)
+- Data-driven discovery of materials with target properties
+- Machine learning-enabled enhanced sampling for molecular simulations
+- Density Functional Theory (DFT) simulations
 
 
 
@@ -42,7 +42,7 @@ I occasionally write about my research, grad school experience, coding, and othe
 ---
 
 ## DIY
-Understand the underlying principles and algorithms behind widely used software packages and libraries by coding key building blocks from scratch.
+I try to understand principles and algorithms behind widely used software packages and libraries by coding key building blocks from scratch.
 
 
 
