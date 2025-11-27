@@ -1,14 +1,18 @@
 ---
-layout: post
-title: 'Inside conda environments: A brief walkthrough with a practical example'
-permalink: _posts/:year/:month/:day/:title/
-tags: [conda, python, environments, dependency management]
-ai_assistants:
-  - tool: perplexity
-    url: https://www.perplexity.ai/search/write-a-blog-post-on-inner-wor-L_TOwbYaQfqr9MsdN4dkLA#9/
+layout: portfolio_item
+title: "Conda environments"
+permalink: /portfolio/conda/
+keywords: [conda, python, environments, dependency management]
+thumbnail: "https://cdn.simpleicons.org/anaconda/43B02A"
+thumbnail_alt: "Conda Environments Thumbnail"
+thumbnail_credit: "simple icons"
+thumbnail_credit_url: "https://cdn.simpleicons.org/"
+languages: ["Conda", "Python"]
+date: 2025-04-10
+page_modified: 2025-11-27
 ---
 
-In the world of software development and data science, managing dependencies is one of the most challenging aspects of any project. Whether you're building a machine learning model, developing a web application, or conducting scientific research, your project relies on specific libraries and tools. These dependencies often have their own requirements, which can conflict with other projects or even the operating system itself.
+Managing dependencies is one of the most challenging aspects of any project, often have their own requirements, which can conflict with other projects or even the operating system itself.
 
 <!--more-->
 
@@ -100,7 +104,7 @@ def add(a, b):
     return a + b  
 
 def factorial(n):  
-    return 1 if n &lt;= 1 else n * factorial(n-1)  
+    return 1 if n <= 1 else n * factorial(n-1)  
 ```
 
 **setup.py**:
@@ -175,8 +179,8 @@ $ conda activate dev_env
 $ pip install -e .
 
 # Test changes instantly without reinstalling
-&gt;&gt;&gt; import simple_math
-&gt;&gt;&gt; simple_math.add(5, 3)
+>>> import simple_math
+>>> simple_math.add(5, 3)
 8
 ```
 
@@ -269,4 +273,3 @@ Conda environments are indispensable for modern development workflows, offering 
 By understanding Conda’s isolation mechanics and publishing options, you can optimize both your workflow and storage usage while ensuring reproducibility across projects.
 
 Whether you're debugging dependency conflicts or distributing tools globally, Conda provides the infrastructure needed to keep your projects lean and scalable!
-
