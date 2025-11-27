@@ -154,3 +154,57 @@ time,
   color: #6b7280; /* gray-500 */
   filter: grayscale(100%);
 }
+
+// Everyday Essentials grid layout
+.essentials-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+  margin: 30px 0;
+}
+
+.essential-card {
+  border: 1px solid #eee;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+  background: white;
+  
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  }
+  
+  a {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+  }
+  
+  .essential-logo {
+    padding: 30px 20px 20px;
+    text-align: center;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    
+    img {
+      max-width: 100%;
+      height: auto;
+      display: inline-block;
+    }
+  }
+  
+  h3 {
+    padding: 15px 15px 20px;
+    margin: 0;
+    text-align: center;
+    font-size: 1.1em;
+  }
+  
+  p {
+    padding: 0 15px 15px;
+    margin: 0;
+    color: #666;
+    font-size: 0.9em;
+    text-align: center;
+  }
+}
