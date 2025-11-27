@@ -9,6 +9,13 @@
 
 // Component partials
 @import "components/_referral-links-cards";
+@import "components/_callouts";
+
+/* Expose configurable project thumbnail height as a CSS variable.
+   Value comes from _config.yml: project_thumbnail_height */
+:root {
+  --project-thumbnail-height: {{ site.project_thumbnail_height | default: '120px' }};
+}
 // Profile image styling
 img[src*="#profile"] {
   display: block;

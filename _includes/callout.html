@@ -1,0 +1,57 @@
+{% assign type = include.type | default: 'neutral' %}
+{% assign in_title = include.title %}
+{% assign in_icon = include.icon %}
+
+{%- case type -%}
+  {%- when 'definition' -%}
+    {%- assign variant = 'callout--definition' -%}
+    {%- assign default_icon = '📘' -%}
+    {%- assign default_title = 'Definition' -%}
+  {%- when 'info' -%}
+    {%- assign variant = 'callout--info' -%}
+    {%- assign default_icon = 'ℹ️' -%}
+    {%- assign default_title = 'Info' -%}
+  {%- when 'note' -%}
+    {%- assign variant = 'callout--note' -%}
+    {%- assign default_icon = '📝' -%}
+    {%- assign default_title = 'Note' -%}
+  {%- when 'tip' -%}
+    {%- assign variant = 'callout--tip' -%}
+    {%- assign default_icon = '💡' -%}
+    {%- assign default_title = 'Tip' -%}
+  {%- when 'warning' -%}
+    {%- assign variant = 'callout--warning' -%}
+    {%- assign default_icon = '⚠️' -%}
+    {%- assign default_title = 'Warning' -%}
+  {%- else -%}
+    {%- assign variant = '' -%}
+    {%- assign default_icon = '🛈' -%}
+    {%- assign default_title = 'Note' -%}
+{%- endcase -%}
+
+{% assign title = in_title | default: default_title %}
+{% assign icon = in_icon | default: default_icon %}
+
+{%- comment -%}
+Priority for body content:
+1) include.body (recommended, pass via capture and markdownify)
+2) include.content (also pass via capture)
+3) include.text (single-line plain text)
+{%- endcomment -%}
+{% if include.body %}
+  {% assign body_html = include.body | markdownify %}
+{% elsif include.content %}
+  {% assign body_html = include.content | markdownify %}
+{% elsif include.text %}
+  {% assign body_html = include.text %}
+{% elsif body %}
+  {% comment %} Fallback: use a parent-scope captured `body` if present {% endcomment %}
+  {% assign body_html = body | markdownify %}
+{% else %}
+  {% assign body_html = '' %}
+{% endif %}
+
+<div class="callout {{ variant }}" data-icon="{{ icon }}">
+  {% if title %}<p><strong>{{ title }}</strong></p>{% endif %}
+  {% if body_html %}{{ body_html }}{% endif %}
+</div>

@@ -1,0 +1,100 @@
+/* Callout/admonition boxes usable in any Markdown (kramdown-compatible)
+   Usage in Markdown (kramdown block IAL):
+
+> **Term:** Short definition here
+> Additional details...
+{: .callout .callout--definition}
+
+> Optional title
+> Body text goes here
+{: .callout .callout--info}
+
+   Variants: .callout--info, .callout--note, .callout--tip, .callout--warning, .callout--definition
+*/
+
+.callout {
+  --_bg: #f9fafb;         /* neutral bg */
+  --_border: #e5e7eb;     /* neutral border */
+  --_accent: #6b7280;     /* neutral accent (icon/left bar) */
+  --_title: #111827;      /* title color */
+  --_text: #374151;       /* body text color */
+
+  margin: 1em 0;
+  padding: 12px 14px;
+  background: var(--_bg);
+  border: 1px solid var(--_border);
+  border-left: 4px solid var(--_accent);
+  border-radius: 6px;
+  color: var(--_text);
+}
+
+/* Tighten nested paragraph spacing */
+.callout > :first-child { margin-top: 0; }
+.callout > :last-child { margin-bottom: 0; }
+
+/* Make a bold first line read like a title if present */
+.callout > p:first-child strong:first-child {
+  display: inline; /* keep title on the same line as the icon */
+  color: var(--_title);
+  margin: 0 4px 0 0; /* small gap after title */
+}
+
+/* Simple inline icon via emoji fallback (optional) */
+/* Make the first paragraph inline so it can sit on the same line as the icon */
+.callout > p:first-child {
+  display: inline;
+}
+
+/* Place the icon before the content inline at the container level */
+.callout[data-icon]::before {
+  content: attr(data-icon);
+  display: inline-block;
+  margin-right: 6px;
+  line-height: 1; /* keep icon aligned with text */
+}
+
+/* Variants */
+.callout--info {
+  --_bg: #eef6ff;
+  --_border: #cfe2ff;
+  --_accent: #3b82f6;
+}
+
+.callout--note {
+  --_bg: #f8fafc;
+  --_border: #e2e8f0;
+  --_accent: #64748b;
+}
+
+.callout--tip {
+  --_bg: #effdf5;
+  --_border: #c7f0da;
+  --_accent: #10b981;
+}
+
+.callout--warning {
+  --_bg: #fffbeb;
+  --_border: #fde68a;
+  --_accent: #f59e0b;
+}
+
+.callout--definition {
+  --_bg: #f5f3ff;
+  --_border: #ddd6fe;
+  --_accent: #8b5cf6;
+}
+
+/* Dark mode adjustments if the theme uses prefers-color-scheme */
+@media (prefers-color-scheme: dark) {
+  .callout {
+    --_bg: rgba(255,255,255,0.04);
+    --_border: rgba(255,255,255,0.12);
+    --_text: #d1d5db;
+    --_title: #e5e7eb;
+  }
+  .callout--info    { --_accent: #60a5fa; }
+  .callout--note    { --_accent: #94a3b8; }
+  .callout--tip     { --_accent: #34d399; }
+  .callout--warning { --_accent: #fbbf24; }
+  .callout--definition { --_accent: #a78bfa; }
+}
