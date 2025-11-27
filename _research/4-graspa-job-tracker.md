@@ -12,7 +12,9 @@ preprints:
     title: "Interpretable Nanoporous Materials Design with Symmetry-Aware Networks"
     thumbnail: assets/images/arxiv-logo.svg
     description: "Check the methods and supplementary information sections for details on the gRASPA job tracker."
-page_modified: 2025-10-20
+date: 2025-04-20
+page_modified: 2025-10-23
+
 ---
 
 Developed a tracking tool to manage and monitor high-throughput Monte Carlo simulations using the gRASPA software package. The tool was required to be developed to efficiently generate the dataset needed for training an interpretable machine learning model (more details in [Relevant links](#relevant-links)). Since then, the tool has been used in a few other projects ranging from simply parsing the adsorbate number to complete adsorption isotherm plots. More details on the tool and its functionalities are available in the [GitHub repository](https://github.com/sbkashif/gRASPA_job_tracker).
