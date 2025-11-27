@@ -2,6 +2,7 @@
 <div class="project-grid">
   {% assign portfolio_items = site.portfolio | sort: 'date' | reverse %}
   {% for project in portfolio_items limit: include.limit %}
+    {% unless project.hidden %}
     <div class="project-card">
       <a href="{{ project.url }}">
         <img src="{{ project.thumbnail }}" alt="{{ project.title }}">
@@ -30,5 +31,6 @@
         {% endif %}
       {% endif %}
     </div>
+    {% endunless %}
   {% endfor %}
 </div>
