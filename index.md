@@ -6,9 +6,9 @@ layout: home
 {% include social_icons_inline.html %}
 
 
-## Hello! I'm Salman, currently a Postdoctoral Researcher at SUNY Buffalo.
+## Hello! I'm Salman, currently a Research Professional at the University of Minnesota.
 
-My postdoctoral work with [Prof. Kaihang Shi](https://shiresearchgroup.github.io) focuses on understanding selectivity mechanisms in zeolitic membranes for applications in energy storage and chemical seperations. Prior to this, I completed my PhD from Clemson University in [Prof. Sapna Sarupria's](https://sarupriagroup.github.io) group where I investigated fouling mechanisms in polyamide water purification membranes.
+My previous postdoctoral training with [Prof. Kaihang Shi](https://shiresearchgroup.github.io) focused on understanding selectivity mechanisms in zeolitic membranes for applications in energy storage and chemical seperations. Prior to that, I completed my PhD from Clemson University in [Prof. Sapna Sarupria's](https://sampel-group.github.io) group where I investigated fouling mechanisms in polyamide water purification membranes.
 
 ### Expertise:
 - Molecular Dynamics (MD) simulations
