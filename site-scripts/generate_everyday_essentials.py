@@ -19,7 +19,9 @@ from urllib.parse import quote
 ESSENTIALS_REPO_PATH = Path("/Users/sbkashif/workspace/codes/everyday-essentials")
 README_PATH = ESSENTIALS_REPO_PATH / "README.md"
 OUTPUT_PATH = Path("/Users/sbkashif/workspace/codes/sbkashif.github.io/_portfolio/everyday-essentials.md")
-SUBPAGES_DIR = Path("/Users/sbkashif/workspace/codes/sbkashif.github.io/_portfolio/subpages")
+SUBPAGES_DIR = Path("/Users/sbkashif/workspace/codes/sbkashif.github.io/_portfolio/everyday-essentials/subpages")
+# Directory for internally rendered pages generated from README-linked markdown (specialized under portfolio)
+PAGES_DIR = Path("/Users/sbkashif/workspace/codes/sbkashif.github.io/_portfolio/everyday-essentials")
 GITHUB_REPO_URL = "https://github.com/sbkashif/everyday-essentials"
 
 # Badge color palette
@@ -76,10 +78,12 @@ def parse_toc_structure(readme_path):
     return items
 
 
-def validate_github_file(filepath):
-    """Check if a file exists in the local repo."""
+def validate_local_md(filepath):
+    """Check if a markdown file exists in the local repo."""
+    if not filepath:
+        return False
     local_path = ESSENTIALS_REPO_PATH / filepath
-    return local_path.exists()
+    return local_path.exists() and local_path.suffix.lower() in {".md", ".markdown"}
 
 
 def generate_badge_url(name, index=0):
@@ -144,8 +148,44 @@ def generate_card_html(name, link, badge_url, is_external=True):
 """
 
 
+def create_internal_page(name, source_md_relpath, parent_slug="everyday-essentials"):
+    """Create an internal HTML page (Jekyll markdown) rendering the linked README markdown."""
+    slug = slugify(name)
+    permalink = f"/{parent_slug}/{slug}/"
+    output_path = PAGES_DIR / f"{slug}.md"
+
+    # Read source markdown content
+    source_path = ESSENTIALS_REPO_PATH / source_md_relpath
+    try:
+        with open(source_path, "r") as sf:
+            source_md = sf.read()
+    except Exception as e:
+        print(f"  ⚠ Failed to read source for {name}: {e}")
+        return None
+
+    # Front matter for an internal portfolio item page (hidden from listing)
+    fm = f"""---
+layout: portfolio_item
+title: "{name.title()}"
+permalink: {permalink}
+date: {datetime.now().strftime('%Y-%m-%d')}
+page_modified: {datetime.now().strftime('%Y-%m-%d')}
+hidden: true
+---
+
+"""
+
+    # Write internal page
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    with open(output_path, "w") as f:
+        f.write(fm + source_md)
+
+    print(f"  ✓ Created internal page: {output_path}")
+    return permalink
+
+
 def generate_subpage(item, parent_name="everyday-essentials"):
-    """Generate a sub-page for items with children but no direct link."""
+    """Generate a sub-page for items with children but no direct link. Cards link to internal pages."""
     slug = slugify(item['name'])
     permalink = f"/{parent_name}/{slug}/"
     output_path = SUBPAGES_DIR / f"{parent_name}-{slug}.md"
@@ -153,7 +193,7 @@ def generate_subpage(item, parent_name="everyday-essentials"):
     # Validate all child links before creating the page
     valid_children = []
     for child in item['children']:
-        if child['link'] and validate_github_file(child['link']):
+        if validate_local_md(child.get('link')):
             valid_children.append(child)
     
     # If no valid children after validation, skip this page
@@ -176,11 +216,13 @@ hidden: true
 <div class="essentials-grid">
 """
     
-    # Generate cards for children
+    # Generate cards for children (create internal pages first)
     for idx, child in enumerate(valid_children):
-        github_link = f"{GITHUB_REPO_URL}/blob/main/{child['link']}"
+        child_permalink = create_internal_page(child['name'], child['link'], parent_slug=parent_name)
+        if not child_permalink:
+            continue
         badge_url = generate_badge_url(child['name'], idx)
-        content += generate_card_html(child['name'], github_link, badge_url, is_external=True)
+        content += generate_card_html(child['name'], child_permalink, badge_url, is_external=False)
     
     content += f"""</div>
 
@@ -229,9 +271,11 @@ This page aggregates content from my [everyday-essentials repository]({GITHUB_RE
         badge_url = generate_badge_url(item['name'], idx)
         
         # Item has a direct link
-        if item['link'] and validate_github_file(item['link']):
-            github_link = f"{GITHUB_REPO_URL}/blob/main/{item['link']}"
-            content += generate_card_html(item['name'], github_link, badge_url, is_external=True)
+        if validate_local_md(item.get('link')):
+            # Create an internal page rendering the linked markdown
+            permalink = create_internal_page(item['name'], item['link'])
+            if permalink:
+                content += generate_card_html(item['name'], permalink, badge_url, is_external=False)
         
         # Item has children but no direct link - create a sub-page
         elif item['children']:
