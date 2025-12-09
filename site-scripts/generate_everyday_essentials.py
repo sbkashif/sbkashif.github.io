@@ -14,6 +14,7 @@ import re
 from pathlib import Path
 from datetime import datetime
 from urllib.parse import quote
+import subprocess
 
 # Configuration
 ESSENTIALS_REPO_PATH = Path("/Users/sbkashif/workspace/codes/everyday-essentials")
@@ -148,6 +149,25 @@ def generate_card_html(name, link, badge_url, is_external=True):
 """
 
 
+def get_git_dates(filepath):
+    """Return (date_created, last_modified) from git history for a file."""
+    rel_path = str(filepath)
+    repo_path = str(ESSENTIALS_REPO_PATH)
+    try:
+        # Get first commit date
+        first = subprocess.check_output(
+            ["git", "log", "--follow", "--format=%ad", "--date=short", rel_path],
+            cwd=repo_path
+        ).decode().strip().split('\n')
+        if first:
+            date_created = first[-1]
+            last_modified = first[0]
+        else:
+            date_created = last_modified = datetime.now().strftime('%Y-%m-%d')
+    except Exception:
+        date_created = last_modified = datetime.now().strftime('%Y-%m-%d')
+    return date_created, last_modified
+
 def create_internal_page(name, source_md_relpath, parent_slug="everyday-essentials"):
     """Create an internal HTML page (Jekyll markdown) rendering the linked README markdown."""
     slug = slugify(name)
@@ -163,10 +183,8 @@ def create_internal_page(name, source_md_relpath, parent_slug="everyday-essentia
         print(f"  ⚠ Failed to read source for {name}: {e}")
         return None
 
-
     # Use the markdown as-is from the source repo (no normalization, no code removal)
     # Ensure a blank line after every markdown table for correct rendering
-    import re
     def add_blank_line_after_tables(md):
         lines = md.splitlines()
         out = []
@@ -185,20 +203,14 @@ def create_internal_page(name, source_md_relpath, parent_slug="everyday-essentia
         return '\n'.join(out)
     processed_md = add_blank_line_after_tables(source_md)
 
-    # Preserve the original date if the file exists, otherwise use today
-    orig_date = datetime.now().strftime('%Y-%m-%d')
-    if output_path.exists():
-        with open(output_path, 'r') as f:
-            for line in f:
-                if line.strip().startswith('date:'):
-                    orig_date = line.strip().split(':',1)[1].strip()
-                    break
+    # Get git dates for the source file
+    date_created, last_modified = get_git_dates(source_path)
     fm = f"""---
 layout: portfolio_item
 title: "{name.title()}"
 permalink: {permalink}
-date: {orig_date}
-page_modified: {datetime.now().strftime('%Y-%m-%d')}
+date_created: {date_created}
+last_modified: {last_modified}
 hidden: true
 ---
 \n"""
@@ -217,32 +229,26 @@ def generate_subpage(item, parent_name="everyday-essentials"):
     slug = slugify(item['name'])
     permalink = f"/{parent_name}/{slug}/"
     output_path = SUBPAGES_DIR / f"{parent_name}-{slug}.md"
-    
+
     # Validate all child links before creating the page
     valid_children = []
     for child in item['children']:
         if validate_local_md(child.get('link')):
             valid_children.append(child)
-    
+
     # If no valid children after validation, skip this page
     if not valid_children:
         print(f"  ⚠ Skipping {item['name']}: no valid child links found")
         return None
-    
-    # Preserve the original date if the file exists, otherwise use today
-    orig_date = datetime.now().strftime('%Y-%m-%d')
-    if output_path.exists():
-        with open(output_path, 'r') as f:
-            for line in f:
-                if line.strip().startswith('date:'):
-                    orig_date = line.strip().split(':',1)[1].strip()
-                    break
+
+    # Use git dates for the subpage file itself
+    date_created, last_modified = get_git_dates(output_path)
     content = f"""---
 layout: portfolio_item
 title: "{item['name'].title()}"
 permalink: {permalink}
-date: {orig_date}
-page_modified: {datetime.now().strftime('%Y-%m-%d')}
+date_created: {date_created}
+last_modified: {last_modified}
 hidden: true
 ---
 
@@ -250,7 +256,7 @@ hidden: true
 
 <div class="essentials-grid">
 """
-    
+
     # Generate cards for children (create internal pages first)
     for idx, child in enumerate(valid_children):
         child_permalink = create_internal_page(child['name'], child['link'], parent_slug=parent_name)
@@ -258,26 +264,26 @@ hidden: true
             continue
         badge_url = generate_badge_url(child['name'], idx)
         content += generate_card_html(child['name'], child_permalink, badge_url, is_external=False)
-    
+
     content += f"""</div>
 
 [← Back to Everyday Essentials](/portfolio/everyday-essentials/)
 """
-    
+
     # Write the file
     output_path.parent.mkdir(parents=True, exist_ok=True)
     with open(output_path, 'w') as f:
         f.write(content)
-    
+
     print(f"  ✓ Created sub-page: {output_path}")
     return permalink
 
 
 def generate_main_page(items):
     """Generate the main portfolio page."""
-    
-    # Front matter
 
+    # Use git dates for the main README file
+    date_created, last_modified = get_git_dates(README_PATH)
     content = f"""---
 layout: portfolio_item
 title: "Everyday Essentials"
@@ -287,8 +293,8 @@ thumbnail: "/assets/images/everyday-essentials-thumbnail.png"
 thumbnail_alt: "Everyday Essentials Thumbnail"
 thumbnail_credit: "Generated by AI"
 languages: ["Shell", "Git", "Terminal"]
-    date: 2025-11-28
-    page_modified: {datetime.now().strftime('%Y-%m-%d')}
+date_created: {date_created}
+last_modified: {last_modified}
 ---
 A curated collection of useful information I refer to daily — from basic English grammar to terminal commands and keyboard shortcuts. This serves as a quick reference guide for common tasks and tools.
 
@@ -300,30 +306,30 @@ This page aggregates content from my [everyday-essentials repository]({GITHUB_RE
 
 <div class="essentials-grid">
 """
-    
+
     # Process each top-level item
     for idx, item in enumerate(items):
         badge_url = generate_badge_url(item['name'], idx)
-        
+
         # Item has a direct link
         if validate_local_md(item.get('link')):
             # Create an internal page rendering the linked markdown
             permalink = create_internal_page(item['name'], item['link'])
             if permalink:
                 content += generate_card_html(item['name'], permalink, badge_url, is_external=False)
-        
+
         # Item has children but no direct link - create a sub-page
         elif item['children']:
             permalink = generate_subpage(item)
             if permalink:  # Only add card if sub-page was created
                 content += generate_card_html(item['name'], permalink, badge_url, is_external=False)
-        
+
         # Item has no link and no children - skip it
         else:
             print(f"  ⚠ Skipping {item['name']}: no link or children")
-    
+
     content += "</div>\n"
-    
+
     return content
 
 
