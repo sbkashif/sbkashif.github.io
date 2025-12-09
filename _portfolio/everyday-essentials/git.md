@@ -2,8 +2,8 @@
 layout: portfolio_item
 title: "Git"
 permalink: /everyday-essentials/git/
-date: 2025-11-28
-page_modified: 2025-12-06
+date_created: 2023-12-08
+last_modified: 2025-12-09
 hidden: true
 ---
 
@@ -582,3 +582,89 @@ git-author-commits() {
     done
 }
 ```
+
+## visualize branch divergence and merging via graph
+### command
+`git log --graph --oneline --decorate`
+
+### example output
+```bash
+*   37c8281 (HEAD -> organization_and_docs) Merge remote-tracking branch 'refs/remotes/origin/organization_and_docs'
+|\  
+| * 6c82ea9 (origin/organization_and_docs) add missing required files for hydrolysis
+| * 8c57f13 fix hydrolysis codes for different atom naming convention
+* | 4127be0 (origin/main, origin/epoxy, origin/HEAD, epoxy) Merge pull request #19
+|\| 
+
+| * 87bdc6c modify correcting routine to read reacting atom indices
+| * 463a651 additional correcting routine message
+```
+
+* a **branch structure diagram** (ASCII graph)
+* each commit on **one line**
+* with **branch names and tags** clearly shown next to commits
+
+### option-by-option Explanation
+
+#### `--graph`
+
+visually draws the branch structure in ASCII characters:
+
+* `*` marks commits
+* `|`, `\`, `/` show how branches diverge and merge
+
+example:
+
+```bash
+*   37c8281 Merge branch 'origin/organization_and_docs'
+|\  
+| * 6c82ea9 add missing required files for hydrolysis
+```
+
+#### `--oneline`
+
+compresses each commit to a **single line**, using:
+
+* the **short commit hash** (7 characters)
+* the **first line** of the commit message
+
+so instead of:
+
+```bash
+commit 87bdc6c0c1aa0408ca7f9f2030200b...
+Author: Salman
+Date: Mon Dec 8 16:00:00 2025
+
+    modify correcting routine to read indices
+```
+
+you see:
+
+```bash
+87bdc6c modify correcting routine to read indices
+```
+
+#### `--decorate`
+
+displays **branch names**, **tags**, and **HEAD pointers** next to the commits.
+
+example:
+
+```bash
+37c8281 (HEAD -> organization_and_docs) Merge remote-tracking branch 'origin/organization_and_docs'
+4127be0 (origin/main, origin/epoxy, origin/HEAD, epoxy) Merge pull request #19
+```
+
+this shows:
+
+* where `HEAD` is
+* what branch a commit belongs to
+* what tags point to which commit
+* what the remote tracking branch is (`origin/main`)
+
+this is essential to understand the state of your branches.
+
+
+#### `--all` (highly recommended)
+
+to get a full repository overview. this section will be developed further later.

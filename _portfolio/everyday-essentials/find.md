@@ -2,18 +2,35 @@
 layout: portfolio_item
 title: "Find"
 permalink: /everyday-essentials/find/
-date: 2025-11-28
-page_modified: 2025-11-28
+date_created: 2024-02-23
+last_modified: 2025-10-01
 hidden: true
 ---
 
-# Calculate the number of files 
+# find
+
+find is a powerful Unix command-line utility for searching and locating files and directories within a filesystem based on user-specified criteria. It traverses directory trees recursively, allowing complex queries using expressions for name, type, size, modification time, permissions, and more. It can also execute actions on matched files (e.g., delete, move, run commands), making it highly flexible for automation.
+
+## Basic syntax
+
+```bash
+find [path] [options] [expression] [actions]
+```
+
+- `path`: Directory to start searching from (e.g., `.` for current directory).
+- `options`: Control search behavior (e.g., `-maxdepth`, `-mindepth`).
+- `expression`: Criteria to match files/directories (e.g., `-name "*.txt"`, `-type f`).
+- `actions`: What to do with matches (e.g., `-print`, `-exec command {} \;`).
+
+# my usage examples
+
+## calculate the number of files in current directory
 
 find . -maxdepth 1 -type d ! -path . -exec sh -c 'echo -n "{}: "; find "{}" -type f | wc -l' \;
 
-# Printing column values and timestamp in OpenMM output file
+## printing column values and timestamp in OpenMM output file
 
-## Purpose: See if the run would be completed in time for the number of hours the node is requested
+**Purpose:** see if the run would be completed in time for the number of hours the node is requested
 
 `find . -name "prod_out.txt" -exec sh -c '
   dir=$(dirname "$1")
@@ -31,26 +48,19 @@ find . -maxdepth 1 -type d ! -path . -exec sh -c 'echo -n "{}: "; find "{}" -typ
   echo "2nd column: $second_col, Last column: $last_col"
 ' sh {} \;`
 
-# Sort directories numerically
 
-find ../../gcmc_simulations/loadings/sar_1/calero/nh3/473K/ -maxdepth 1 -type d \
-  ! -name "." \
-| awk -F'/' '{print $(NF) "\t" $0}' \
-| sort -g \
-| cut -f2
-
-# Sort directories numerically - clean
+## sort directories numerically
 
 ```bash
 find . -maxdepth 1 -type d ! -name "." | sed 's|^\./||' | sort -g | sed 's|^|./|'
 ```
 
-## explanation via <img src="https://r2cdn.perplexity.ai/pplx-full-logo-primary-dark%402x.png" style="height:32px;margin-right:16px"/>
+## step-by-step explanation via <img src="https://r2cdn.perplexity.ai/pplx-full-logo-primary-dark%402x.png" style="height:32px;margin-right:16px"/>
 
 
 ***
 
-### 1. Finding Directories in the Current Folder
+### finding Directories in the current folder
 
 ```bash
 find . -maxdepth 1 -type d
@@ -73,7 +83,7 @@ find . -maxdepth 1 -type d
 
 ***
 
-### 2. Removing the `./` Prefix for Numeric Sorting
+### removing the `./` Prefix for numeric sorting
 
 ```bash
 sed 's|^\./||'
@@ -95,7 +105,7 @@ sed 's|^\./||'
 
 ***
 
-### 3. Numeric Sorting of Floating Point Values
+### numeric sorting of floating point values
 
 ```bash
 sort -g
@@ -108,7 +118,7 @@ sort -g
 
 ***
 
-### 4. Restoring the Path Prefix
+### restoring the path prefix
 
 ```bash
 sed 's|^|./|'
@@ -128,7 +138,7 @@ sed 's|^|./|'
 
 ***
 
-### 5. Excluding Current Directory (Optional)
+### excluding current directory (Optional)
 
 ```bash
 find . -maxdepth 1 -type d ! -name "."

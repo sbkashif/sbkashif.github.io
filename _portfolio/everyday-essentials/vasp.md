@@ -2,36 +2,37 @@
 layout: portfolio_item
 title: "Vasp"
 permalink: /everyday-essentials/vasp/
-date: 2025-11-28
-page_modified: 2025-11-28
+date_created: 2025-11-02
+last_modified: 2025-11-02
 hidden: true
 ---
 
-# VASP parallelization
-VASP uses two main parallelization types to distribute the computational load across CPUs.
+# vasp parallelization
+vasp uses two main parallelization types to distribute the computational load across CPUs.
 
-### MPI (Message Passing Interface)
+**mpi (message passing interface)**
 
-Concept: Allows independent processes (ranks) to communicate by sending messages, typically across different cores and nodes.
+*concept*: allows independent processes (ranks) to communicate by sending messages, typically across different cores and nodes.
 
-VASP Role: The primary scaling method. Each MPI process handles a fraction of the total workload (e.g., k-points or bands).
-Control Point: The core count specified in the job script (mpirun -n N or #SBATCH --ntasks=N).
+*vasp role*: the primary scaling method. Each MPI process handles a fraction of the total workload (e.g., k-points or bands).
+Control Point: the core count specified in the job script (mpirun -n N or #SBATCH --ntasks=N).
 
-### Shared Memory Parallelization (NCORE)
-Concept: Allows multiple computational threads within a single MPI process to share memory.
+**shared memory parallelization (ncore)**
 
-VASP Role: Used to accelerate memory-intensive operations (FFTs, diagonalization).
-Control Point: The NCORE tag in the INCAR file.
+*concept*: allows multiple computational threads within a single MPI process to share memory.
 
-### Resource Definitions
-Core ($\mathbf{N_{\text{cores}}}$): The total number of CPU threads allocated to your job (the 'N' in mpirun -n N).
+*vasp role*: Used to accelerate memory-intensive operations (FFTs, diagonalization).
+Control Point: the NCORE tag in the INCAR file.
+
+### resource definitions
+Core ($\mathbf{N_{\text{cores}}}$): the total number of CPU threads allocated to your job (the 'N' in mpirun -n N).
 Node ($\mathbf{N_{\text{nodes}}}$): A physical server containing multiple cores. Your request, --nodes=1, means all processes run on the same server.
 
 ## 💻 Hardware Request Settings (SLURM/PBS)
 
-The key is requesting a core count that is highly divisible.
-### The Core Count Rule
-Choose a number of cores that is a highly composite number to allow for flexible and efficient parallel grouping (NCORE and KPAR). When number of cores are 32, divisors: 2, 4, 8, 16 are best for VASP parallelization.
+the key is requesting a core count that is highly divisible.
+### the Core Count Rule
+Choose a number of cores that is a highly composite number to allow for flexible and efficient parallel grouping (NCORE and KPAR). When number of cores are 32, divisors: 2, 4, 8, 16 are best for vasp parallelization.
 
 ### Slurm settings
 
@@ -41,12 +42,12 @@ Choose a number of cores that is a highly composite number to allow for flexible
 `$MPIRUN -n 32 $VASP_DIR/bin/vasp_std &> vasp.out`
 
 
-## ⚙️ VASP Parallelization Settings (INCAR Tags)
+## ⚙️ vasp Parallelization Settings (INCAR Tags)
 These tags define how the total allocated cores are internally divided.
 
-### $\mathbf{NCORE}$ (The Primary Parallelization Flag)
+### $\mathbf{NCORE}$ (the Primary Parallelization Flag)
 Purpose: Controls the number of cores that work together in a single shared-memory group.
-Principle: When VASP runs with $N_{\text{cores}}$, $NCORE$ divides the job into groups:
+Principle: When vasp runs with $N_{\text{cores}}$, $NCORE$ divides the job into groups:
 $$\text{Number of Groups} = \frac{N_{\text{cores}}}{NCORE}$$
 
 Expert Recommendation: Set $\mathbf{NCORE}$ to a divisor of $N_{\text{cores}}$ that is close to $\mathbf{\sqrt{N_{\text{cores}}}}$.
@@ -69,9 +70,9 @@ Recommendation: Set LPLANE = .TRUE.. This is highly recommended for large-scale 
 
 ## 📈 Performance Verification (OUTCAR Analysis)
 
-Check the end of the VASP OUTCAR file after a short test run.
+Check the end of the vasp OUTCAR file after a short test run.
 
-Check Settings: VASP prints the final parallelization setup:
+Check Settings: vasp prints the final parallelization setup:
 
 NCORE = 8
 KPAR = 1
@@ -80,6 +81,6 @@ KPAR = 1
 ## Verify these match your INCAR inputs.
 
 Analyze Timing: Look for the General and Subroutines timing table.
-Goal: The time for the self-consistency cycle (e.g., RMM-DIIS or ZGEMM) should be minimized.
+Goal: the time for the self-consistency cycle (e.g., RMM-DIIS or ZGEMM) should be minimized.
 
 Warning Sign: If MPI Communication time is large, your $\mathbf{NCORE}$ might be too high, indicating communication overhead is dominating computation.

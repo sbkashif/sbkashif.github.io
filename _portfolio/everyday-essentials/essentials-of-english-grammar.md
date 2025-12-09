@@ -2,8 +2,8 @@
 layout: portfolio_item
 title: "Essentials Of English Grammar"
 permalink: /everyday-essentials/essentials-of-english-grammar/
-date: 2025-11-28
-page_modified: 2025-11-28
+date_created: 2025-10-29
+last_modified: 2025-10-30
 hidden: true
 ---
 
@@ -132,6 +132,7 @@ Tense shows the **time** of an action.
 | Past | I ate | I was eating | I had eaten | I had been eating |
 | Future | I will eat | I will be eating | I will have eaten | I will have been eating |
 
+
 ---
 
 ## 4. Detailed Tense Usage
@@ -220,6 +221,7 @@ Reported speech.
 | Positive | tall | one thing |
 | Comparative | taller | two things |
 | Superlative | tallest | more than two things |
+
 
 ---
 
@@ -380,4 +382,3 @@ Example: Dinner is cooked by the chef.
 - **Maintain tense consistency within paragraphs:** Don’t switch tenses unnecessarily, which can confuse the reader.
 - **Use present tense for general truths:** When stating facts or general principles, use the present tense.
 - **Avoid lengthy, convoluted sentences:** Break complex ideas into smaller, manageable sentences for clarity.
-

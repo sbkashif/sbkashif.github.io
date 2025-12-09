@@ -2,13 +2,14 @@
 layout: portfolio_item
 title: "Awk"
 permalink: /everyday-essentials/awk/
-date: 2025-11-28
-page_modified: 2025-11-28
+date_created: 2025-05-29
+last_modified: 2025-10-30
 hidden: true
 ---
 
-# basic syntax of awk
+# awk
 
+## basic syntax
 A typical AWK command looks like this:
 
 ```bash
@@ -28,7 +29,7 @@ Special blocks:
 
 
 
-# usage examples
+# my usage examples
 
 ## finding the average of a particular column in the OpenMM output file
 

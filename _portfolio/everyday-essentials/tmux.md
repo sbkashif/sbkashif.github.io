@@ -2,34 +2,38 @@
 layout: portfolio_item
 title: "Tmux"
 permalink: /everyday-essentials/tmux/
-date: 2025-11-28
-page_modified: 2025-11-28
+date_created: 2025-09-09
+last_modified: 2025-09-29
 hidden: true
 ---
 
 # tmux
 
-## Start a session
+## start a session
 
 ```bash
 tmux new -s <session_name>
 ```
-Observe a green strip at the bottom of the terminal with the session name printed over it
+observe a green strip at the bottom of the terminal with the session name printed over it
 
-Once the session begins, run the shell script that you would otherwise submit in a regular terminal
+once the session begins, run the shell script that you would otherwise submit in a regular terminal
 
 
 ### Exit the session (while keeping it running in the background)
 
-Ctrl+B --> Release the keys --> D. A message regarding detachment will be printed on screen.
+ctrl+b --> release the keys --> d. a message regarding detachment will be printed on screen
 
 ## Monitor runs/progress in an active session
 
 ```bash
 tmux attach -t <session_name>
 ```
-Similarly, you can create multiple sessions, and see the list of all the sessions from `tmux ls`
+similarly, you can create multiple sessions, and see the list of all the sessions from `tmux ls`
 
 ### Killing a session
 
-Terminate a run in between by killing the session: `tmux kill-session -t <session-name>`
+terminate a run in between by killing the session: 
+
+```bash
+tmux kill-session -t <session-name>
+```

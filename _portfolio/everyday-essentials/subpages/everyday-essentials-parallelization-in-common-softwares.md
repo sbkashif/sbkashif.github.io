@@ -2,8 +2,8 @@
 layout: portfolio_item
 title: "Parallelization In Common Softwares"
 permalink: /everyday-essentials/parallelization-in-common-softwares/
-date: 2025-11-28
-page_modified: 2025-11-28
+date_created: 2025-12-09
+last_modified: 2025-12-09
 hidden: true
 ---
 

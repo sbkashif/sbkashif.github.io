@@ -2,8 +2,8 @@
 layout: portfolio_item
 title: "Grep"
 permalink: /everyday-essentials/grep/
-date: 2025-11-28
-page_modified: 2025-11-28
+date_created: 2023-11-17
+last_modified: 2025-10-30
 hidden: true
 ---
 
@@ -15,8 +15,8 @@ grep (global regular expression print) is the classic Unix tool for searching te
   - Thompson's work on regular expressions and text search influenced grep's implementation. Over time grep became part of standard Unix toolchains and GNU grep added many extensions (PCRE support with -P, --include/--exclude, colorized output, etc.).
   - Today many alternatives exist (rg, ag) that are optimized for large repositories while preserving grep-like syntax.
 
-
-## Basic syntax
+---
+## basic syntax
 
 A typical grep invocation:
 
@@ -59,7 +59,7 @@ Other useful behaviors
 - Performance: for literal substring searches use -F. For very large trees, consider faster modern tools like ripgrep (rg) or The Silver Searcher (ag).
 
 
-# Usage examples
+# my usage examples
 
 ## Searching for a particular string in all python files in a directory:
 

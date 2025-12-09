@@ -2,8 +2,8 @@
 layout: portfolio_item
 title: "Rsync"
 permalink: /everyday-essentials/rsync/
-date: 2025-11-28
-page_modified: 2025-11-28
+date_created: 2025-11-28
+last_modified: 2025-11-28
 hidden: true
 ---
 
@@ -88,6 +88,7 @@ Given a folder named `src`:
 | `rsync -a src/ .` (inside dest folder) | Syncs contents into current directory         |
 | `rsync -a src .`                       | Creates `./src`                               |
 
+
 **RULE:**
 
 > Use **trailing slash on source** (`src/`) when you want the destination to be an *exact mirror* of source contents.
@@ -102,8 +103,7 @@ Useful for scripts and CI pipelines.
 
 ---
 
-# usage examples
-
+# my usage examples
 
 ## safely mirror one directory into another (local → local)
 
