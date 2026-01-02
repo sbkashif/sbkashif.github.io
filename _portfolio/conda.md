@@ -8,8 +8,8 @@ thumbnail_alt: "Conda Environments Thumbnail"
 thumbnail_credit: "simple icons"
 thumbnail_credit_url: "https://cdn.simpleicons.org/"
 languages: ["Conda", "Python"]
-date: 2025-04-10
-page_modified: 2025-11-27
+date_created: 2025-04-10
+last_modified: 2025-11-27
 ---
 
 Managing dependencies is one of the most challenging aspects of any software project. Individual dependencies often come with their own requirements, which can conflict with other projects or even with the operating system itself.

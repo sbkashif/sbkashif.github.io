@@ -17,8 +17,8 @@ codes:
   - url: "https://github.com/sbkashif/lennard-jones-cpp"
     title: "lennard-jones-cpp"
     thumbnail: assets/images/github-logo.svg
-date: 2025-04-03
-page_modified: 2025-06-20
+date_created: 2025-04-03
+last_modified: 2025-06-20
 ---
 
 This project implements a molecular dynamics simulation framework using the Lennard-Jones potential to model particle interactions. Molecular Dynamics (MD) simulations are a powerful computational technique used in physics, chemistry, and materials science to study the physical movements of atoms and molecules.

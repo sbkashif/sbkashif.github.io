@@ -17,8 +17,8 @@ codes:
   - url: "https://github.com/sbkashif/mlcpp"
     title: "mlcpp"
     thumbnail: assets/images/github-logo.svg
-date: 2025-06-01
-page_modified: 2025-06-15
+date_created: 2025-06-01
+last_modified: 2025-06-15
 ---
 
 ML-CPP is a high-performance machine learning library that combines the computational efficiency of C++ with the user-friendly interface of Python. The project demonstrates how to bridge these two worlds effectively, creating a machine learning framework that's both powerful and easy to use.
