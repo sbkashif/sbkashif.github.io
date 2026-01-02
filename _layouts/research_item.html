@@ -5,16 +5,17 @@ layout: default
 <article class="research-item">
   <header>
     <h1>{{ page.title }}</h1>
-    {%- assign mdate = page.modified_date | default: page.page_modified -%}
-    {%- if mdate -%}
+    {% assign lastmod = page.last_modified | default: page.date_created %}
     <p class="meta">
-      Last modified: <time datetime="{{ mdate | date_to_xmlschema }}">{{ mdate | date: site.minima.date_format }}</time>
+      Date created: <span style="color: #666;">{{ page.date_created }}</span>, Last modified: <span style="color: #666;">{{ lastmod }}</span>
+      {% if page.categories and page.categories.size > 0 %}
+        <span class="categories">
+          {% for category in page.categories %}
+            <span class="category">{{ category }}</span>
+          {% endfor %}
+        </span>
+      {% endif %}
     </p>
-    {%- elsif page.date -%}
-    <p class="meta">
-      <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: site.minima.date_format }}</time>
-    </p>
-    {%- endif -%}
   </header>
 
   {% if page.banner_image %}

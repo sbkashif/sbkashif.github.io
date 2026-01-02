@@ -19,8 +19,9 @@ layout: default
       {% endif %}
     </div>
     {% endif %}
+    {% assign lastmod = page.last_modified | default: page.date_created %}
     <p class="meta">
-      Date created: <span style="color: #666;">{{ page.date_created }}</span>, Last modified: <span style="color: #666;">{{ page.last_modified }}</span>
+      Date created: <span style="color: #666;">{{ page.date_created }}</span>, Last modified: <span style="color: #666;">{{ lastmod }}</span>
       {% if page.categories and page.categories.size > 0 %}
         <span class="categories">
           {% for category in page.categories %}
