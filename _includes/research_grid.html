@@ -1,8 +1,7 @@
-<!-- filepath: /Users/salmanbinkashif/codes/sbkashif.github.io/_includes/research_grid.html -->
 <div class="project-grid">
   {% assign research_items = site.research | default: empty_array %}
-  {% if research_items.size > 0 %}
-    {% assign sorted_items = research_items | sort: 'date' | reverse %}
+  {% assign sorted_items = research_items | sort: 'date_created' | reverse %}
+  {% if sorted_items.size > 0 %}
     {% for item in sorted_items limit: include.limit %}
       <div class="project-card">
         <a href="{{ item.url }}">
