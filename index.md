@@ -46,7 +46,7 @@ I try to understand principles and algorithms behind widely used software packag
 
 
 
-{% include portfolio_grid.html limit=3 show_excerpt=false %}
+{% include portfolio_grid.html limit=2 show_excerpt=false %}
 
 [View All DIYs](/portfolio){: .view-all-button}
 
