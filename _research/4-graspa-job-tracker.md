@@ -16,21 +16,21 @@ date_created: 2025-04-20
 last_modified: 2025-10-23
 ---
 
-Developed a tracking tool to manage and monitor high-throughput Monte Carlo simulations using the gRASPA software package. The tool was required to be developed to efficiently generate the dataset needed for training an interpretable machine learning model (more details in [Relevant links](#relevant-links)). Since then, the tool has been used in a few other projects ranging from simply parsing the adsorbate number to complete adsorption isotherm plots. More details on the tool and its functionalities are available in the [GitHub repository](https://github.com/sbkashif/gRASPA_job_tracker).
+Developed a tracking tool to manage and monitor high-throughput Monte Carlo simulations using the gRASPA software package. The tool was created to efficiently generate the datasets needed for training an interpretable machine learning model (more details in [Relevant links](#relevant-links)). Since then, the tool has been used in various other projects, ranging from parsing adsorbate numbers to generating complete adsorption isotherm plots. More details on the tool and its functionalities are available in the [GitHub repository](https://github.com/sbkashif/gRASPA_job_tracker).
 
 <!--more-->
 
- A typical workflow involves setting up multiple simulation jobs with varying parameters across different compute nodes. The tracker keeps track of job statuses, retries failed simulations, and compiles results into a structured format for downstream analysis. The key idea is to control all the simulation and software settings from a single `config file` and ensure reproducibility.
+A typical workflow involves setting up multiple simulation jobs with varying parameters across different compute nodes. The tracker monitors job statuses, retries failed simulations, and compiles results into a structured format for downstream analysis. The key objective is to control all simulation and software settings from a single `config file` to ensure reproducibility.
 
 Here is an example `config file` used to generate adsorption isotherms:
 ```yaml
 # Project configuration
 project:
-  name: "coremof_parameter_matrix"  # Project name used for organizing data directories
+  name: "coremof_parameter_matrix"  # Unique identifier for data organization
 
 # Output directory structure
 output:
-  base_dir: ${PROJECT_ROOT}/examples/data/${project.name}/  # Base directory for output
+  base_dir: ${PROJECT_ROOT}/examples/data/${project.name}/  # Root directory for results
 
 # Database configuration
 database:
@@ -40,24 +40,24 @@ database:
 
 # Batch settings
 batch:
-  size: 1  # Number of structures per batch
-  max_concurrent_jobs: 50  # Maximum number of concurrent jobs
-  strategy: custom_alphabetical  # Options: alphabetical, custom_alphabetical, size_based, random
+  size: 1  # Number of structures processed per batch
+  max_concurrent_jobs: 50  # Limit for simultaneous job submissions
+  strategy: custom_alphabetical  # Sorting: alphabetical, custom_alphabetical, size_based, or random
   copy_files: false
 
 # Parameter Matrix Configuration - NEW FEATURE
 parameter_matrix:
-  # Define parameter ranges
+  # Define simulation parameter ranges
   parameters:
     temperature: [298, 313, 333]  # K
     pressure: [100000, 200000, 500000]  # Pa
     co2_molfraction: [0.15, 0.25, 0.35]  # CO2 mole fraction
-    n2_molfraction: [0.85, 0.75, 0.65]   # N2 mole fraction (should sum to 1.0 with CO2)
+    n2_molfraction: [0.85, 0.75, 0.65]   # N2 mole fraction (binary mixture)
   
-  # How to combine parameters: 'all' for all combinations, 'custom' for specific combinations
-  combinations: 'all'  # This will create 3x3x3x3 = 81 parameter combinations per batch
+  # Generation logic: 'all' for Cartesian product, 'custom' for explicit pairs
+  combinations: 'all'  # Generates 81 unique combinations (3^4) per batch
   
-  # Alternative: use custom combinations
+  # Example for explicit combinations:
   # combinations: 'custom'
   # custom_combinations:
   #   - name: "low_temp_low_pressure"
@@ -66,19 +66,13 @@ parameter_matrix:
   #       pressure: 100000
   #       co2_molfraction: 0.15
   #       n2_molfraction: 0.85
-  #   - name: "high_temp_high_pressure"
-  #     parameters:
-  #       temperature: 333
-  #       pressure: 500000
-  #       co2_molfraction: 0.35
-  #       n2_molfraction: 0.65
 
-# Script paths
+# Executable script paths
 scripts:
   simulation: gRASPA_job_tracker.scripts.raspa_simulation
   analysis: gRASPA_job_tracker.scripts.raspa_analysis
 
-# File templates with parameter substitution support
+# File templates with dynamic parameter substitution
 run_file_templates:
   simulation_input:
     file_path: ${PROJECT_ROOT}/templates/simulation.input
@@ -86,12 +80,10 @@ run_file_templates:
       NumberOfInitializationCycles: 2000000
       NumberOfProductionCycles: 2000000
       MoviesEvery: 3000000
-      # Parameter matrix values will be automatically substituted in simulation.input
-      # The system will find lines that start with parameter names and replace their values
-      # For example: "Temperature 298" will become "Temperature 313" for parameter combinations
-      # CO2 and N2 mole fractions will be updated in their respective component sections
+      # Values from the parameter matrix are automatically injected into simulation.input.
+      # The engine replaces lines starting with parameter keys (e.g., "Temperature").
 
-# Forcefield files
+# Forcefield definitions
 forcefield_files:
   force_field_mixing_rules: ${PROJECT_ROOT}/forcefields/N2-Forcefield/force_field_mixing_rules.def
   force_field: ${PROJECT_ROOT}/forcefields/N2-Forcefield/force_field.def
@@ -99,15 +91,15 @@ forcefield_files:
   CO2: ${PROJECT_ROOT}/forcefields/N2-Forcefield/CO2.def
   N2: ${PROJECT_ROOT}/forcefields/N2-Forcefield/N2.def
 
-# SLURM configuration - will be scaled for parameter matrix
+# SLURM scheduler configuration
 slurm_config:
   account: bcvz-delta-gpu
   partition: gpuA100x4
-  time: 8:00:00  # Increased time for parameter matrix jobs
-  nodes: 1  # Will be automatically set to number of parameter combinations
+  time: 8:00:00  # Walltime allocated for parameter matrix sweep
+  nodes: 1       # Scaled automatically based on combination count
   mem: 50GB
 
-# Environment setup
+# Environment and dependency setup
 environment_setup: |
   cd $SLURM_SUBMIT_DIR
   module load anaconda3_gpu
@@ -117,17 +109,17 @@ environment_setup: |
   source activate graspa
 ```
 
-Following is a brief overview of the tool's interface and workflow:
- - First, users will define a database of the structures to be simulated. For now, the package is tested only on RASPA and gRASPA software, and hence only with CIF format files.
- - Next, a splitting strategy is defined to divide the total number of simulations into smaller batches that can be run on different compute nodes. This helps in efficient resource utilization and parallel execution. A typical splitting strategy will be based on alphabetical order or random assignment.
- - Then, the package will automatically assign a compute node for each batch of structures based on the defined splitting strategy. A user-defined simulation environment (like software modules) will also be loaded in each node.
- - Finally, the simulation workflow will be performed on each batch, with the tracker monitoring job statuses, handling retries for failed jobs, and compiling results into a CSV file for easy analysis.
+Below is a brief overview of the tool's interface and workflow:
+- First, users define a database of the structures to be simulated. Currently, the package is tested only with the RASPA and gRASPA software; therefore, it supports only the CIF file format.
+- Next, a splitting strategy is defined to divide the total number of simulations into smaller batches for distribution across different compute nodes. This ensures efficient resource utilization and parallel execution. Typical strategies include alphabetical order or random assignment.
+- The package then automatically assigns a compute node to each batch based on the defined strategy. A user-defined simulation environment (such as specific software modules) is also loaded onto each node.
+- Finally, the simulation workflow is executed for each batch. The tracker monitors job statuses, handles retries for failed jobs, and compiles results into a CSV file for streamlined analysis.
 
-All the above information will be fetched from a single `config file` as shown above. The tool will generate necessary job scripts, batch files, and organize the output data in a structured directory format.
+All the workflow logic is driven by a single `config file`, as shown above. The tool generates the necessary job scripts and batch files while organizing the output data into a structured directory format.
 
-A more detailed schematic is available in the supplementary information of the preprint referred in the [relevant links](#relevant-links). I am not putting here since paper is under review and I am unsure about copyright tranfer policies of the journal.
+A more detailed schematic is available in the supplementary information of the preprint referenced in the [relevant links](#relevant-links). It is not included here as the paper is currently under review, and I am ensuring compliance with the journal's copyright transfer policies.
 
-Further details on the simulations of a given batch can be referenced from the dedicated batch directory. Overall project directory structure is as follows:
+Further details regarding the simulations for a specific batch can be found within the dedicated batch directory. The overall project directory structure is organized as follows:
 
 ```txt
 {PROJECT_NAME}/
@@ -170,7 +162,7 @@ Further details on the simulations of a given batch can be referenced from the d
 │       └── ...                                # Up to thousands of parameter combinations
 ```
 
-Finally, as the simulations are submitted and executed, the job tracker maintains a comprehensive CSV file (`job_status.csv`) that logs the status of each parameter combination for every batch. This file includes details such as job IDs, parameter combinations, submission times, completion times, and current workflow stages. An example snippet of the `job_status.csv` file is shown below:
+As simulations are submitted and executed, the job tracker maintains a comprehensive CSV file (`job_status.csv`) that logs the status of every parameter combination for each batch. This file includes details such as job IDs, parameter combinations, submission and completion timestamps, and current workflow stages. An example snippet of the `job_status.csv` file is shown below:
 
 ```csv
  batch_id,job_id,param_combination_id,status,submission_time,completion_time,workflow_stage
@@ -181,7 +173,7 @@ Finally, as the simulations are submitted and executed, the job tracker maintain
 ```
 
 
-The community is invited to explore and contribute to the development of this gRASPA job tracker tool. Its modular design allows for easy extension to other simulation packages and workflows, making it a versatile solution for high-throughput computational studies.
+The community is invited to explore and contribute to the development of the gRASPA job tracker. Its modular design allows for easy extension to other simulation packages and workflows, making it a versatile solution for high-throughput computational studies.
 
 <!-- Project links: GitHub repo and arXiv preprint -->
 {% include referral_links.html %}
