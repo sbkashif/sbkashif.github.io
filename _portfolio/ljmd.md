@@ -17,8 +17,11 @@ codes:
   - url: "https://github.com/sbkashif/lennard-jones-cpp"
     title: "lennard-jones-cpp"
     thumbnail: assets/images/github-logo.svg
+  - url: "https://github.com/sbkashif/MolSimWorkbench"
+    title: "MolSimWorkbench"
+    thumbnail: assets/images/github-logo.svg
 date_created: 2025-04-03
-last_modified: 2025-06-20
+last_modified: 2026-01-23
 ---
 
 This project implements a molecular dynamics simulation framework using the Lennard-Jones potential to model particle interactions. Molecular Dynamics (MD) simulations are a powerful computational technique used in physics, chemistry, and materials science to study the physical movements of atoms and molecules.
@@ -323,6 +326,7 @@ The simulation generates several output files:
 | Apr 3, 2025 | Velocity-Verlet Integrator | Implementation of the time integration algorithm |
 | Apr 3, 2025 | Unit Testing | Setup of Google Test framework and implementation of initial unit tests |
 | Apr 14, 2025 | Energy Minimization | Implementation of steepest descent energy minimization algorithm |
+|Jan 25, 2026| Repurpose into a borader tool | Repurposed the LJ-only engine to a broader tool to support basic DFT calculations to enable more intuitive learning from the first principles
 
 
 ## Future extensions:
