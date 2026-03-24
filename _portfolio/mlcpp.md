@@ -3,7 +3,7 @@ layout: portfolio_item
 title: "ML-CPP: Machine Learning Library with C++ Backend"
 permalink: /portfolio/mlcpp/
 keywords: machine learning, C++, Python, pybind11, scikit-learn, neural networks, linear regression
-thumbnail: https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Artificial_Intelligence_%26_AI_%26_Machine_Learning.jpg/1500px-Artificial_Intelligence_%26_AI_%26_Machine_Learning.jpg?20201029165740
+thumbnail: https://upload.wikimedia.org/wikipedia/commons/f/f3/Artificial_Intelligence_%26_AI_%26_Machine_Learning.jpg
 thumbnail_alt: "C++ Programming Language Logo"
 thumbnail_credit: "mikemacmarketing, Wikimedia Commons"
 thumbnail_credit_url: "https://commons.wikimedia.org/wiki/File:Artificial_Intelligence_%26_AI_%26_Machine_Learning.jpg"

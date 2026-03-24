@@ -3,7 +3,7 @@ layout: portfolio_item
 title: "Molecular Dynamics Simulation with Lennard-Jones Potential"
 permalink: /portfolio/ljmd/
 keywords: C++, molecular dynamics, Lennard-Jones potential, C++, simulation, unit testing
-thumbnail: https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Graph_of_Lennard-Jones_potential.png/1599px-Graph_of_Lennard-Jones_potential.png?20201007144459
+thumbnail: https://upload.wikimedia.org/wikipedia/commons/5/51/12-6-Lennard-Jones-Potential.svg
 thumbnail_alt: "C++ Programming Language Logo"
 thumbnail_credit: "Lennard-Jones potential graph, Wikimedia Commons"
 thumbnail_credit_url: "https://commons.wikimedia.org/wiki/File:Graph_of_Lennard-Jones_potential.png"
